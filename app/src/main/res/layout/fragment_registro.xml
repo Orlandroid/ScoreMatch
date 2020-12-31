@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/azul"
+    tools:context=".Registro">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="30dp"
+                android:text="@string/txt_Arena"
+                android:textColor="@color/black"
+                android:textSize="30sp" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinerArena"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:entries="@array/arenas"
+                android:spinnerMode="dialog" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="30dp"
+                android:text="@string/Formacion"
+                android:textColor="@color/black"
+                android:textSize="30sp" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinerFormacion"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:entries="@array/formaciones"
+                android:spinnerMode="dialog" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="30dp"
+                android:text="@string/txt_Capitan"
+                android:textColor="@color/black"
+                android:textSize="30sp" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinerCapitan"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:entries="@array/capitanes"
+                android:spinnerMode="dialog" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="30dp"
+                android:text="@string/txt_NivelCapitan"
+                android:textColor="@color/black"
+                android:textSize="30sp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtNivelCapitan"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:hint="@string/txt_NivelCapitan"
+                android:inputType="number"
+                android:maxLength="2" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="30dp"
+                android:text="Tipo portero"
+                android:textColor="@color/black"
+                android:textSize="30sp" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinerTipoPortero"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:entries="@array/tiposPorteros"
+                android:spinnerMode="dialog" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="30dp"
+                android:text="@string/txt_JugadoresEspeciales"
+                android:textColor="@color/black"
+                android:textSize="30sp" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtJugadoresEspeciales"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:hint="@string/txt_JugadoresEspeciales"
+                android:inputType="number"
+                android:maxLength="2" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEnviarRegistro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="60dp"
+                android:layout_marginBottom="30dp"
+                android:text="@string/txt_Enviar"
+                android:textSize="30sp" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</FrameLayout>
