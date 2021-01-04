@@ -7,8 +7,17 @@
     <string name="Formacion">Formacion</string>
     <string name="txt_Capitan">Capitan</string>
     <string name="txt_NivelCapitan">Nivel capitan</string>
-    <string name="txt_JugadoresEspeciales">Jugadores Especiales</string>
+    <string name="txt_JugadoresEspeciales">Jugadores Especiales Totales</string>
     <string name="mensaje_exito">Se guardaron correctamente los datos</string>
+    <string-array name="filtrar">
+        <item>Arena</item>
+        <item>Especiales</item>
+        <item>Capitan</item>
+        <item>Formacion</item>
+        <item>Arena</item>
+        <item>NivelCapitan</item>
+        <item>portero</item>
+    </string-array>
     <string-array name="arenas">
         <item>1</item>
         <item>2</item>
@@ -23,8 +32,8 @@
         <item>11</item>
     </string-array>
     <string-array name="formaciones">
-        <item>4-4-2</item>
-        <item>4-4-3-1</item>
+        <item>4–4-2</item>
+        <item>4–4-3-1</item>
         <item>3-5-2</item>
         <item>4-1-4-1</item>
         <item>5-3-2</item>

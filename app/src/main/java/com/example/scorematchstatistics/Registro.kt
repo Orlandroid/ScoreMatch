@@ -2,6 +2,7 @@ package com.example.scorematchstatistics
 
 import android.content.Context
 import android.os.Bundle
+import android.text.InputFilter
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,7 +13,6 @@ import android.widget.Toast
 import com.google.firebase.FirebaseApp
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_registro.*
 import java.util.*
 
@@ -63,10 +63,7 @@ class Registro : Fragment() {
             )
             iniciarDatabase()
             databaseReference.child("Jugador").child(scoreDatos.id).setValue(scoreDatos)
-            Log.w(
-                "Datos",
-                "DatabaseReference $databaseReference"
-            )
+
             val mensaje: String = getString(R.string.mensaje_exito)
             Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show()
             limpiarTxt()
@@ -81,15 +78,12 @@ class Registro : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-        Log.w("MENSAJE", "OnCreate")
-
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.w("MENSAJE", "OnCreateView")
         val vista: View = inflater.inflate(R.layout.fragment_registro, container, false)
         btnEnviarRegistro = vista.findViewById(R.id.btnEnviarRegistro)
         btnEnviarRegistro.setOnClickListener { obtenerDatos() }
