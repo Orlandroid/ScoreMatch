@@ -15,7 +15,7 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 class Estadisticas : Fragment() {
-    // TODO: Rename and change types of parameters
+
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var databaseReference: DatabaseReference
@@ -40,11 +40,11 @@ class Estadisticas : Fragment() {
                 if (snapshot.exists()) {
                     for (element in snapshot.children) {
                         jugador.add(element.child("arena").value.toString())
-                        jugador.add(element.child("cantidadJugadoresEspeciales").value.toString())
+                        jugador.add(element.child("especiales").value.toString())
                         jugador.add(element.child("capitan").value.toString())
                         jugador.add(element.child("formacion").value.toString())
-                        jugador.add(element.child("nivelCapitan").value.toString())
-                        jugador.add(element.child("tipoPorterp").value.toString())
+                        jugador.add(element.child("nivel").value.toString())
+                        jugador.add(element.child("portero").value.toString())
                     }
                     var myTabla = context?.let { TableLayoutDinamico(tableLayout, it) }
                     myTabla?.agregarCabezeras(cabezera)
@@ -71,7 +71,7 @@ class Estadisticas : Fragment() {
     ): View? {
         iniciarDatabase()
         listarDatos()
-        val vista: View = inflater.inflate(R.layout.fragment_estadisticas, container, false)
+        val vista = inflater.inflate(R.layout.fragment_estadisticas, container, false)
         tableLayout = vista.findViewById(R.id.tablelayout)
         return vista
     }
