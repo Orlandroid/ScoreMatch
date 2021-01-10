@@ -1,6 +1,7 @@
 package com.example.scorematchstatistics
 
 import android.content.Context
+import android.graphics.Typeface
 import android.util.Log
 import android.view.Gravity
 import android.view.ViewGroup
@@ -58,8 +59,9 @@ class TableLayoutDinamico(tabLayout: TableLayout, context: Context) {
         textView = TextView(mContext)
         textView.setPadding(11, 7, 11, 11)
         textView.gravity = Gravity.CENTER
-        textView.setBackgroundResource(R.drawable.textview_border)
-        textView.setTextColor(ContextCompat.getColor(mContext, R.color.azul))
+        textView.typeface = Typeface.DEFAULT_BOLD
+        textView.setBackgroundResource(R.drawable.textview_cabezera)
+        textView.setTextColor(ContextCompat.getColor(mContext, R.color.black))
         textView.text = texto
         renglon.addView(textView)
     }

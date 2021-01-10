@@ -7,14 +7,13 @@
     <string name="Formacion">Formacion</string>
     <string name="txt_Capitan">Capitan</string>
     <string name="txt_NivelCapitan">Nivel capitan</string>
-    <string name="txt_JugadoresEspeciales">Jugadores Especiales Totales</string>
+    <string name="txt_JugadoresEspeciales"><br>Jugadores </br> <br>especiales</br><br> totales</br></string>
     <string name="mensaje_exito">Se guardaron correctamente los datos</string>
     <string-array name="filtrar">
         <item>Arena</item>
         <item>Especiales</item>
         <item>Capitan</item>
         <item>Formacion</item>
-        <item>Arena</item>
         <item>NivelCapitan</item>
         <item>portero</item>
     </string-array>
@@ -70,4 +69,6 @@
     <string name="txt_Enviar">Enviar</string>
     <string name="txt_texto_buscar_filtrado">Filtrar por</string>
     <string name="texto_buscar">Buscar</string>
+    <string name="texto_actualizar">Actualizar</string>
+    <string name="txt_mediafire">mediafire</string>
 </resources>
