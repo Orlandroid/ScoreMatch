@@ -10,7 +10,6 @@ import android.widget.TableLayout
 import android.widget.Toast
 import com.google.firebase.FirebaseApp
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.fragment_estadisticas.*
 import kotlinx.android.synthetic.main.fragment_estadisticas.view.*
 
 
@@ -39,7 +38,7 @@ class Estadisticas : Fragment() {
             R.id.menu_actualizar -> startActivity(
                 Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse("https://www.google.com")
+                    Uri.parse("https://github.com/orlando1818/ScoreMatch/blob/main/README.md")
                 )
             )
         }

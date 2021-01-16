@@ -4,11 +4,7 @@
 
     <item
         android:id="@+id/menu_actualizar"
-        android:icon="@mipmap/ic_mega"
+        android:icon="@mipmap/ic_download"
         android:title="@string/texto_actualizar"
         app:showAsAction="ifRoom" />
-    <item
-        android:icon="@mipmap/ic_mediafire"
-        android:title="@string/txt_mediafire"
-        app:showAsAction="always" />
 </menu>

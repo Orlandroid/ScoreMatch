@@ -5,7 +5,6 @@ import android.graphics.Typeface
 import android.util.Log
 import android.view.Gravity
 import android.view.ViewGroup
-import android.widget.RelativeLayout
 import android.widget.TableRow
 import android.widget.TextView
 import android.widget.TableLayout

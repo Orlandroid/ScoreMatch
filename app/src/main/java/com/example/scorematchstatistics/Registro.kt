@@ -1,8 +1,10 @@
 package com.example.scorematchstatistics
 
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
+
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,8 +12,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import com.google.firebase.FirebaseApp
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_registro.*
 import java.util.*
 
@@ -26,6 +27,7 @@ class Registro : Fragment() {
     private var param2: String? = null
     private lateinit var btnEnviarRegistro: Button
     private lateinit var databaseReference: DatabaseReference
+
 
     private fun validarTxt(): Boolean {
         return txtNivelCapitan.text.toString().isEmpty()
@@ -42,8 +44,40 @@ class Registro : Fragment() {
         databaseReference = FirebaseDatabase.getInstance().reference
     }
 
+    private fun checkEnviado(): Boolean {
+        val id = Build.ID
+        var encontrado = false
+        FirebaseApp.initializeApp(requireContext())
+        databaseReference = FirebaseDatabase.getInstance().getReference("Identificador")
+
+        val datos = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    for (element in snapshot.children) {
+                        if (element.child("name").value.toString() == id) {
+                            btnEnviarRegistro.isEnabled = false
+                            Toast.makeText(
+                                context,
+                                "Ya has llenado el registro solo podras visualizar los datos",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            encontrado = true
+                            break
+                        }
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(context, error.message, Toast.LENGTH_SHORT).show()
+            }
+        }
+        databaseReference.addValueEventListener(datos)
+        return encontrado
+    }
+
     private fun obtenerDatos() {
-        if (!validarTxt()) {
+        if (!validarTxt() && !checkEnviado()) {
             val arena: Int = spinerArena.selectedItem.toString().toInt()
             val formacion: String = spinerFormacion.selectedItem.toString()
             val capitan: String = spinerCapitan.selectedItem.toString()
@@ -60,8 +94,10 @@ class Registro : Fragment() {
                 tipoPortero,
                 jugadoresEspeciales
             )
+            val identificador = Identificador(UUID.randomUUID().toString(), Build.ID)
             iniciarDatabase()
             databaseReference.child("Jugador").child(scoreDatos.id).setValue(scoreDatos)
+            databaseReference.child("Identificador").child(identificador.id).setValue(identificador)
 
             val mensaje: String = getString(R.string.mensaje_exito)
             Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show()
@@ -83,7 +119,9 @@ class Registro : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         val vista: View = inflater.inflate(R.layout.fragment_registro, container, false)
+        checkEnviado()
         btnEnviarRegistro = vista.findViewById(R.id.btnEnviarRegistro)
         btnEnviarRegistro.setOnClickListener { obtenerDatos() }
         return vista
