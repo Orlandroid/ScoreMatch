@@ -24,7 +24,7 @@ class TableLayoutDinamico(tabLayout: TableLayout, context: Context) {
         myTabla.removeAllViews()
     }
 
-    //private var letra: Typeface = Typeface.createFromAsset(context.assets, "fuentes")
+    private var letra: Typeface = Typeface.createFromAsset(context.assets, "Pokemon Solid.ttf")
     private lateinit var textView: TextView
     private lateinit var renglon: TableRow
 
@@ -45,10 +45,8 @@ class TableLayoutDinamico(tabLayout: TableLayout, context: Context) {
     private fun crerCelda(texto: String) {
         textView = TextView(mContext)
         textView.setPadding(8, 4, 8, 4)
-
         textView.setBackgroundResource(R.drawable.textview_border)
         textView.gravity = Gravity.CENTER
-        //textView.typeface = letra
         textView.setTextColor(ContextCompat.getColor(mContext, R.color.negro))
         textView.text = texto
         renglon.addView(textView)

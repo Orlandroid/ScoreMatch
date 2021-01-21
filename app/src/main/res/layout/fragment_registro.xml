@@ -115,6 +115,7 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="60dp"
+                android:autofillHints="totales"
                 android:hint="@string/txt_JugadoresEspeciales"
                 android:inputType="number"
                 android:maxLength="2" />

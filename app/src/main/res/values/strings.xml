@@ -71,4 +71,14 @@
     <string name="texto_buscar">Buscar</string>
     <string name="texto_actualizar">Actualizar</string>
     <string name="txt_mediafire">mediafire</string>
+    <string name="mensajeAlertInternet">
+        si deseas contestar el registro cierra la aplicacion activa el internet y vuelve a abrirla
+        de lo contrario solo podras visualizar datos
+    </string>
+    <string name="tituloInternet">Internet</string>
+    <string name="tituloEnvioRegistroYa">Ya has contestado el registro</string>
+    <string name="mensajeRegistroYa">
+        Ya has contestado el registro por lo cual solo
+        podras visualizar los datos
+    </string>
 </resources>

@@ -1,16 +1,20 @@
 package com.example.scorematchstatistics
 
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
-
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import com.example.scorematchstatistics.controlador.AlertMensaje
+import com.example.scorematchstatistics.controlador.ControladorRegistro
 import com.google.firebase.FirebaseApp
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_registro.*
@@ -28,15 +32,13 @@ class Registro : Fragment() {
     private lateinit var btnEnviarRegistro: Button
     private lateinit var databaseReference: DatabaseReference
 
-
-    private fun validarTxt(): Boolean {
-        return txtNivelCapitan.text.toString().isEmpty()
-                || txtJugadoresEspeciales.text.toString().isEmpty()
-    }
-
-    private fun limpiarTxt() {
-        txtJugadoresEspeciales.text = null
-        txtNivelCapitan.text = null
+    @Suppress("DEPRECATION")
+    private fun conecion(context: Context): Boolean {
+        val con: ConnectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val network: NetworkInfo? = con.activeNetworkInfo
+        //true conexion false no conexion
+        return network?.isConnectedOrConnecting == true //not internet
     }
 
     private fun iniciarDatabase() {
@@ -44,40 +46,45 @@ class Registro : Fragment() {
         databaseReference = FirebaseDatabase.getInstance().reference
     }
 
-    private fun checkEnviado(): Boolean {
-        val id = Build.ID
-        var encontrado = false
-        FirebaseApp.initializeApp(requireContext())
-        databaseReference = FirebaseDatabase.getInstance().getReference("Identificador")
-
-        val datos = object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    for (element in snapshot.children) {
-                        if (element.child("name").value.toString() == id) {
-                            btnEnviarRegistro.isEnabled = false
-                            Toast.makeText(
-                                context,
-                                "Ya has llenado el registro solo podras visualizar los datos",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            encontrado = true
-                            break
-                        }
-                    }
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(context, error.message, Toast.LENGTH_SHORT).show()
-            }
+    private fun check(): Boolean {
+        val preferencia = PreferenciasValores(requireContext())
+        if (preferencia.existePreferencia()) {
+            btnEnviarRegistro.isEnabled = preferencia.recuperarPreferencia()
+            Log.w("Datos", "Se ha encontrado la preferencia")
+            return true
         }
-        databaseReference.addValueEventListener(datos)
-        return encontrado
+        Log.w("Datos", "Seguimos con el metodo")
+        val registradoYa: Boolean
+        databaseReference = FirebaseDatabase.getInstance().getReference("Identificador")
+        val ctrRegistro = ControladorRegistro()
+        registradoYa =
+            ctrRegistro.checkEnviado(requireContext(), databaseReference, btnEnviarRegistro)
+        Log.w("Datos", registradoYa.toString())
+        return registradoYa
+
     }
 
+
+    
+
     private fun obtenerDatos() {
-        if (!validarTxt() && !checkEnviado()) {
+        if (!conecion(requireContext())) {
+            val alertMensaje = AlertMensaje()
+            alertMensaje.showAlertDialog(
+                requireContext(),
+                requireContext().getString(R.string.tituloInternet),
+                requireContext().getString(R.string.mensajeAlertInternet)
+            )
+            val ctrRegistro = ControladorRegistro()
+            ctrRegistro.desabilitarTodo(
+                arrayOf(txtNivelCapitan, txtJugadoresEspeciales),
+                arrayOf(spinerArena, spinerFormacion, spinerCapitan, spinerTipoPortero),
+                btnEnviarRegistro
+            )
+            return
+        }
+        val ctrRegistro = ControladorRegistro()
+        if (!ctrRegistro.validarTxt(txtNivelCapitan, txtJugadoresEspeciales) && !check()) {
             val arena: Int = spinerArena.selectedItem.toString().toInt()
             val formacion: String = spinerFormacion.selectedItem.toString()
             val capitan: String = spinerCapitan.selectedItem.toString()
@@ -101,7 +108,7 @@ class Registro : Fragment() {
 
             val mensaje: String = getString(R.string.mensaje_exito)
             Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show()
-            limpiarTxt()
+            ctrRegistro.limpiarTxt(txtNivelCapitan, txtJugadoresEspeciales)
         } else {
             Toast.makeText(context, "Debes de llenar todos lo datos", Toast.LENGTH_SHORT).show()
         }
@@ -121,9 +128,9 @@ class Registro : Fragment() {
     ): View? {
 
         val vista: View = inflater.inflate(R.layout.fragment_registro, container, false)
-        checkEnviado()
         btnEnviarRegistro = vista.findViewById(R.id.btnEnviarRegistro)
         btnEnviarRegistro.setOnClickListener { obtenerDatos() }
+        check()
         return vista
     }
 
