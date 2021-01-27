@@ -5,12 +5,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.example.scorematchstatistics.Estadisticas
+import com.example.scorematchstatistics.Galeria
 import com.example.scorematchstatistics.R
 import com.example.scorematchstatistics.Registro
 
 private val TAB_TITLES = arrayOf(
     R.string.tab_text_1,
-    R.string.tab_text_2
+    R.string.tab_text_2,
+    R.string.tab_text_3
 )
 
 /**
@@ -23,7 +25,8 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
     override fun getItem(position: Int): Fragment {
         return when (position) {
             0 -> Registro()
-            else -> Estadisticas()
+            1 -> Estadisticas()
+            else -> Galeria()
         }
     }
 
@@ -33,6 +36,6 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
 
     override fun getCount(): Int {
         // Show 2 total pages.
-        return 2
+        return 3
     }
 }

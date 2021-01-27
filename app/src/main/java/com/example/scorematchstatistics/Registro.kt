@@ -12,6 +12,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import com.example.scorematchstatistics.controlador.AlertMensaje
 import com.example.scorematchstatistics.controlador.ControladorRegistro
@@ -31,6 +32,8 @@ class Registro : Fragment() {
     private var param2: String? = null
     private lateinit var btnEnviarRegistro: Button
     private lateinit var databaseReference: DatabaseReference
+    private lateinit var editTextNivel: EditText
+    private lateinit var editTextEspeciales: EditText
 
     @Suppress("DEPRECATION")
     private fun conecion(context: Context): Boolean {
@@ -65,22 +68,24 @@ class Registro : Fragment() {
     }
 
 
-    
+    private fun desabilitar() {
+        val alertMensaje = AlertMensaje()
+        alertMensaje.showAlertDialog(
+            requireContext(),
+            requireContext().getString(R.string.tituloInternet),
+            requireContext().getString(R.string.mensajeAlertInternet)
+        )
+        val ctrRegistro = ControladorRegistro()
+        ctrRegistro.desabilitarTodo(
+            arrayOf(txtNivelCapitan, txtJugadoresEspeciales),
+            arrayOf(spinerArena, spinerFormacion, spinerCapitan, spinerTipoPortero),
+            btnEnviarRegistro
+        )
+    }
 
     private fun obtenerDatos() {
         if (!conecion(requireContext())) {
-            val alertMensaje = AlertMensaje()
-            alertMensaje.showAlertDialog(
-                requireContext(),
-                requireContext().getString(R.string.tituloInternet),
-                requireContext().getString(R.string.mensajeAlertInternet)
-            )
-            val ctrRegistro = ControladorRegistro()
-            ctrRegistro.desabilitarTodo(
-                arrayOf(txtNivelCapitan, txtJugadoresEspeciales),
-                arrayOf(spinerArena, spinerFormacion, spinerCapitan, spinerTipoPortero),
-                btnEnviarRegistro
-            )
+            desabilitar()
             return
         }
         val ctrRegistro = ControladorRegistro()
@@ -129,6 +134,18 @@ class Registro : Fragment() {
 
         val vista: View = inflater.inflate(R.layout.fragment_registro, container, false)
         btnEnviarRegistro = vista.findViewById(R.id.btnEnviarRegistro)
+        editTextEspeciales = vista.findViewById(R.id.txtJugadoresEspeciales)
+        editTextNivel = vista.findViewById(R.id.txtNivelCapitan)
+        editTextEspeciales.setOnClickListener {
+            if (!conecion(requireContext())) {
+                desabilitar()
+            }
+        }
+        editTextNivel.setOnClickListener {
+            if (!conecion(requireContext())) {
+                desabilitar()
+            }
+        }
         btnEnviarRegistro.setOnClickListener { obtenerDatos() }
         check()
         return vista

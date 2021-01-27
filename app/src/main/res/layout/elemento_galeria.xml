@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="5dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginEnd="5dp"
+    android:layout_marginBottom="5dp"
+    android:background="@drawable/textview_border"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imagenViewGaleria"
+        android:layout_width="wrap_content"
+        android:layout_height="150sp"
+        android:contentDescription="Jugador"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/barreror8" />
+
+    <TextView
+        android:id="@+id/texto_galeria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/waring"
+        android:gravity="center"
+        android:text="Jugador"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+
+</LinearLayout>
+

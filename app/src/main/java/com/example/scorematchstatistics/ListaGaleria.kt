@@ -1,0 +1,39 @@
+package com.example.scorematchstatistics
+
+import android.app.AlertDialog
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
+import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
+
+
+class ListaGaleria(val nombresJugadores: Array<String>, val imagenes: Array<Int>) :
+    RecyclerView.Adapter<ListaGaleria.ViewHolder>() {
+
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val cartaImagen: ImageView = itemView.findViewById(R.id.imagenViewGaleria)
+        val cartaTexto: TextView = itemView.findViewById(R.id.texto_galeria)
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.elemento_galeria, parent, false)
+        return ViewHolder(view)
+    }
+
+    override fun getItemCount(): Int = imagenes.size
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.cartaTexto.text = nombresJugadores[position]
+        Picasso.get().load(imagenes[position]).into(holder.cartaImagen)
+        holder.cartaImagen.setOnClickListener {
+
+        }
+    }
+
+
+}
