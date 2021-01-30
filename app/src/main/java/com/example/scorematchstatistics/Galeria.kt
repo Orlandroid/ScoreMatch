@@ -17,19 +17,21 @@ class Galeria : Fragment() {
     private var param2: String? = null
 
     private val imagenesId = arrayOf(
-        R.drawable.arquitecto7,
-        R.drawable.arquitecto8,
-        R.drawable.barreror8,
-        R.drawable.bulldozer1,
-        R.drawable.comander10,
-        R.drawable.comander9,
-        R.drawable.comander92,
-        R.drawable.explorador9,
-        R.drawable.explorador10,
-        R.drawable.barreror5
+        R.drawable.c_amenaza,
+        R.drawable.c_arquitecto,
+        R.drawable.c_explorador,
+        R.drawable.c_guardia,
+        R.drawable.c_horvath,
+        R.drawable.c_intruso,
+        R.drawable.c_mazo,
+        R.drawable.c_motor,
+        R.drawable.c_productor,
+        R.drawable.c_protector,
+        R.drawable.c_velocista
     )
 
     private val nombres = arrayOf(
+        "Infiltrador",
         "Arquitecto",
         "Arquitecto",
         "barreror",
@@ -59,7 +61,7 @@ class Galeria : Fragment() {
     ): View? {
         val vista = inflater.inflate(R.layout.fragment_galeria, container, false)
         val gridItems: RecyclerView = vista.findViewById(R.id.gridItems)
-        val adaptadpr = ListaGaleria(nombres, imagenesId)
+        val adaptadpr = ListaGaleria(nombres, imagenesId, requireContext())
         val gridLayout = GridLayoutManager(requireContext(), 2)
         gridItems.layoutManager = gridLayout
         gridItems.adapter = adaptadpr

@@ -16,13 +16,8 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
-                android:layout_marginTop="30dp"
-                android:text="@string/txt_Arena"
-                android:textColor="@color/black"
-                android:textSize="30sp" />
+                style="@style/stye_txt_registro"
+                android:text="@string/txt_Arena" />
 
             <androidx.appcompat.widget.AppCompatSpinner
                 android:id="@+id/spinerArena"
@@ -33,13 +28,8 @@
                 android:spinnerMode="dialog" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
-                android:layout_marginTop="30dp"
-                android:text="@string/Formacion"
-                android:textColor="@color/black"
-                android:textSize="30sp" />
+                style="@style/stye_txt_registro"
+                android:text="@string/Formacion" />
 
             <androidx.appcompat.widget.AppCompatSpinner
                 android:id="@+id/spinerFormacion"
@@ -50,13 +40,8 @@
                 android:spinnerMode="dialog" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
-                android:layout_marginTop="30dp"
-                android:text="@string/txt_Capitan"
-                android:textColor="@color/black"
-                android:textSize="30sp" />
+                style="@style/stye_txt_registro"
+                android:text="@string/txt_Capitan" />
 
             <androidx.appcompat.widget.AppCompatSpinner
                 android:id="@+id/spinerCapitan"
@@ -67,13 +52,8 @@
                 android:spinnerMode="dialog" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
-                android:layout_marginTop="30dp"
-                android:text="@string/txt_NivelCapitan"
-                android:textColor="@color/black"
-                android:textSize="30sp" />
+                style="@style/stye_txt_registro"
+                android:text="@string/txt_NivelCapitan" />
 
             <EditText
                 android:id="@+id/txtNivelCapitan"
@@ -85,13 +65,8 @@
                 android:maxLength="2" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
-                android:layout_marginTop="30dp"
-                android:text="Tipo portero"
-                android:textColor="@color/black"
-                android:textSize="30sp" />
+                style="@style/stye_txt_registro"
+                android:text="@string/tipo_portero" />
 
             <androidx.appcompat.widget.AppCompatSpinner
                 android:id="@+id/spinerTipoPortero"
@@ -102,13 +77,8 @@
                 android:spinnerMode="dialog" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
-                android:layout_marginTop="30dp"
-                android:text="@string/txt_JugadoresEspeciales"
-                android:textColor="@color/black"
-                android:textSize="30sp" />
+                style="@style/stye_txt_registro"
+                android:text="@string/txt_JugadoresEspeciales" />
 
             <EditText
                 android:id="@+id/txtJugadoresEspeciales"

@@ -1,17 +1,21 @@
 package com.example.scorematchstatistics
 
-import android.app.AlertDialog
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
 
-class ListaGaleria(val nombresJugadores: Array<String>, val imagenes: Array<Int>) :
+class ListaGaleria(
+    val nombresJugadores: Array<String>,
+    val imagenes: Array<Int>,
+    val ctx: Context
+) :
     RecyclerView.Adapter<ListaGaleria.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -31,7 +35,9 @@ class ListaGaleria(val nombresJugadores: Array<String>, val imagenes: Array<Int>
         holder.cartaTexto.text = nombresJugadores[position]
         Picasso.get().load(imagenes[position]).into(holder.cartaImagen)
         holder.cartaImagen.setOnClickListener {
-
+            val intento = Intent(ctx, JugadorAll::class.java)
+            intento.putExtra("jugador", nombresJugadores[position])
+            ctx.startActivity(intento)
         }
     }
 

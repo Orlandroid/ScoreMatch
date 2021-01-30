@@ -8,7 +8,7 @@
     <string name="Formacion">Formacion</string>
     <string name="txt_Capitan">Capitan</string>
     <string name="txt_NivelCapitan">Nivel capitan</string>
-    <string name="txt_JugadoresEspeciales"><br>Jugadores </br> <br>especiales</br><br> totales</br></string>
+    <string name="txt_JugadoresEspeciales">Jugadores\nespeciales\ntotales</string>
     <string name="mensaje_exito">Se guardaron correctamente los datos</string>
     <string-array name="filtrar">
         <item>Arena</item>
@@ -32,7 +32,7 @@
         <item>11</item>
     </string-array>
     <string-array name="formaciones">
-        <item>4–4-2</item>
+        <item>4–4–2</item>
         <item>4–4-3-1</item>
         <item>3-5-2</item>
         <item>4-1-4-1</item>
@@ -50,7 +50,7 @@
         <item>intruso</item>
         <item>motor</item>
         <item>amenaza</item>
-        <item>comander</item>
+        <item>comandante</item>
         <item>protector</item>
         <item>medoreador</item>
         <item>arquitecto</item>
@@ -64,8 +64,7 @@
         <item>portero</item>
         <item>muro</item>
         <item>barreror</item>
-    </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
+    </string-array><!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="txt_Enviar">Enviar</string>
     <string name="txt_texto_buscar_filtrado">Filtrar por</string>
@@ -82,4 +81,5 @@
         Ya has contestado el registro por lo cual solo
         podras visualizar los datos
     </string>
+    <string name="tipo_portero">Tipo portero</string>
 </resources>

@@ -15,7 +15,6 @@
         android:id="@+id/imagenViewGaleria"
         android:layout_width="wrap_content"
         android:layout_height="150sp"
-        android:contentDescription="Jugador"
         android:scaleType="fitXY"
         app:srcCompat="@drawable/barreror8" />
 
