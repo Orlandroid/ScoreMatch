@@ -31,17 +31,17 @@ class Galeria : Fragment() {
     )
 
     private val nombres = arrayOf(
-        "Infiltrador",
+        "Amenaza",
         "Arquitecto",
-        "Arquitecto",
-        "barreror",
-        "bulldozer",
-        "comander",
-        "comander",
-        "comander",
-        "explorador",
-        "explorador",
-        "barreror"
+        "Explorador",
+        "Guardia",
+        "Horvath",
+        "Intruso",
+        "Mazo",
+        "Motor",
+        "Productor",
+        "Protector",
+        "Velocista"
     )
 
 
