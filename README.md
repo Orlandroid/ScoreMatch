@@ -2,14 +2,15 @@
 
 #### Aqui se estara publicando cada actualizacion de aplicacion en los siguientes enlacez de mega y mediafire
 
-##LAST VERSION
+##LAST VERSION 
+[ScoreMatchStatics](https://raw.githubusercontent.com/Orlandroid/ScoreMatch/main/app/release/app-release.apk)
 
 <table>
   <tr>
-  <td><img src="Registro.jpeg"></td><td><img src="Registro2.jpeg"></td>
+  <td><img src="Registro.jpeg" alt"Registro"></td><td><img src="Registro2.jpeg" alt"Registro"></td>
   </tr>
   <tr>
-  <td><img src="Datos.jpeg"></td><td><img src="Galeria.jpeg"></td>
+  <td><img src="Datos.jpeg" alt"Datos"></td><td><img src="Galeria.jpeg" alt"Galeria"></td>
   </tr>
   </table>
 
