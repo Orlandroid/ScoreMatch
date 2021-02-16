@@ -14,6 +14,7 @@ private const val ARG_PARAM2 = "param2"
 class Galeria : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
+
     private var param2: String? = null
 
     private var imagenesId = arrayOf(
