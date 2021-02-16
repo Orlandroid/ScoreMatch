@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="nombres_jugadores">
+        <item>Amenaza</item>
+        <item>Amenaza</item>
+        <item>Arquitecto</item>
+        <item>Comandante</item>
+        <item>Comandante</item>
+        <item>Explorador</item>
+        <item>Explorador</item>
+        <item>Explorador</item>
+        <item>Guardia</item>
+        <item>Guardia</item>
+        <item>Guardia</item>
+        <item>Guardia</item>
+        <item>Infiltrador</item>
+        <item>Infiltrador</item>
+        <item>Intruso</item>
+        <item>Intruso</item>
+        <item>Mayor</item>
+        <item>Marksman</item>
+        <item>Mazo</item>
+        <item>Mazo</item>
+        <item>Medoreador</item>
+        <item>Medoreador</item>
+        <item>Motor</item>
+        <item>Motor</item>
+        <item>Muro</item>
+        <item>Portero</item>
+        <item>Portero</item>
+        <item>Portero</item>
+        <item>Productor</item>
+        <item>Productor</item>
+        <item>Productor</item>
+        <item>Protector</item>
+        <item>Protector</item>
+        <item>Velocista</item>
+        <item>Velocista</item>
+        <item>Velocista</item>
+    </string-array>
+</resources>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="jugadores_imagenes">
+        <item>@drawable/c_amenaza</item>
+        <item>@drawable/c_amenaza_roberts</item>
+        <item>@drawable/c_arquitecto_budak</item>
+        <item>@drawable/c_comandante_segura</item>
+        <item>@drawable/c_horvath</item>
+        <item>@drawable/c_explorador_cabrera</item>
+        <item>@drawable/c_explorador_nazari</item>
+        <item>@drawable/c_explorador_ramalho</item>
+        <item>@drawable/c_guardia_bechet</item>
+        <item>@drawable/c_guardia_davies</item>
+        <item>@drawable/c_guardia_eriksson</item>
+        <item>@drawable/c_guardia_richads</item>
+        <item>@drawable/c_infiltrador_bartosz</item>
+        <item>@drawable/c_infiltrador_wu</item>
+        <item>@drawable/c_intruso_babangida</item>
+        <item>@drawable/c_intruso_kovalchuk</item>
+        <item>@drawable/c_major</item>
+        <item>@drawable/c_marksman_faustinho</item>
+        <item>@drawable/c_mazo</item>
+        <item>@drawable/c_mazo_mensah</item>
+        <item>@drawable/c_medoreador_badr</item>
+        <item>@drawable/c_medoreador_gallagher</item>
+        <item>@drawable/c_motor_nielsen</item>
+        <item>@drawable/c_motor_zukic</item>
+        <item>@drawable/c_muro_romero</item>
+        <item>@drawable/c_portero_lechner</item>
+        <item>@drawable/c_portero_schimidt</item>
+        <item>@drawable/c_portero_taylor</item>
+        <item>@drawable/c_productor_camara</item>
+        <item>@drawable/c_productor_oliva</item>
+        <item>@drawable/c_productor_santos</item>
+        <item>@drawable/c_protector_dekic</item>
+        <item>@drawable/c_protector_nacho</item>
+        <item>@drawable/c_velocista</item>
+        <item>@drawable/c_velocista_dubois</item>
+        <item>@drawable/c_velocista_goosens</item>
+    </integer-array>
+</resources>
