@@ -10,7 +10,7 @@
   <td><img src="Registro.jpeg" alt"Registro"></td><td><img src="Registro2.jpeg" alt"Registro"></td>
   </tr>
   <tr>
-  <td><img src="Datos.jpeg" alt"Datos"></td><td><img src="Galeria.jpeg" alt"Galeria"></td>
+  <td><img src="Datos.jpeg" alt"Datos"></td><td><img src="Galeriaa.jpeg" alt"Galeria"></td>
   </tr>
   </table>
 
