@@ -11,7 +11,13 @@
 **Picaso (para manejo de imagenes) <br>
 **ReciclerView <br>
 **TabLayout <br>
-
+** Kotlin <br> 
+** Shared Preferences <br>
+** RecyclerView <br>
+** ViewPager <br> 
+** Custom View <br>
+** Menus <br>
+** Control de versiones GIT
 
 <table>
   <tr>
