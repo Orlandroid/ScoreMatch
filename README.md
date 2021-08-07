@@ -17,8 +17,9 @@
 ** ViewPager <br> 
 ** Custom View <br>
 ** Menus <br>
-** Control de versiones GIT
+** Control de versiones GIT <br>
 
+** Video de demostracion https://www.youtube.com/watch?v=hGond69ACLU
 <table>
   <tr>
   <td><img src="Registro.jpeg" alt"Registro"></td><td><img src="Registro2.jpeg" alt"Registro"></td>
