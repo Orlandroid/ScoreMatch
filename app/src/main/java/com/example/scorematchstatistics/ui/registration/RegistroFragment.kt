@@ -1,4 +1,4 @@
-package com.example.scorematchstatistics
+package com.example.scorematchstatistics.ui.registration
 
 
 import android.content.Context
@@ -11,29 +11,25 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
+import com.example.scorematchstatistics.R
+import com.example.scorematchstatistics.model.Identificador
+import com.example.scorematchstatistics.util.PreferenciasValores
+import com.example.scorematchstatistics.model.ScoreMatch
 import com.example.scorematchstatistics.controlador.AlertMensaje
 import com.example.scorematchstatistics.controlador.ControladorRegistro
+import com.example.scorematchstatistics.databinding.FragmentRegistroBinding
 import com.google.firebase.FirebaseApp
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.fragment_registro.*
 import java.util.*
 
 
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class RegistroFragment : Fragment() {
 
-
-class Registro : Fragment() {
-
-    private var param1: String? = null
-    private var param2: String? = null
-    private lateinit var btnEnviarRegistro: Button
+    private var _binding: FragmentRegistroBinding? = null
+    private val binding get() = _binding!!
     private lateinit var databaseReference: DatabaseReference
-    private lateinit var editTextNivel: EditText
-    private lateinit var editTextEspeciales: EditText
+
 
     @Suppress("DEPRECATION")
     private fun conecion(context: Context): Boolean {
@@ -44,6 +40,7 @@ class Registro : Fragment() {
         return network?.isConnectedOrConnecting == true //not internet
     }
 
+
     private fun iniciarDatabase() {
         FirebaseApp.initializeApp(requireContext())
         databaseReference = FirebaseDatabase.getInstance().reference
@@ -52,7 +49,7 @@ class Registro : Fragment() {
     private fun check(): Boolean {
         val preferencia = PreferenciasValores(requireContext())
         if (preferencia.existePreferencia()) {
-            btnEnviarRegistro.isEnabled = preferencia.recuperarPreferencia()
+            binding.btnEnviarRegistro.isEnabled = preferencia.recuperarPreferencia()
             Log.w("Datos", "Se ha encontrado la preferencia")
             return true
         }
@@ -61,7 +58,7 @@ class Registro : Fragment() {
         databaseReference = FirebaseDatabase.getInstance().getReference("Identificador")
         val ctrRegistro = ControladorRegistro()
         registradoYa =
-            ctrRegistro.checkEnviado(requireContext(), databaseReference, btnEnviarRegistro)
+            ctrRegistro.checkEnviado(requireContext(), databaseReference, binding.btnEnviarRegistro)
         Log.w("Datos", registradoYa.toString())
         return registradoYa
 
@@ -77,9 +74,14 @@ class Registro : Fragment() {
         )
         val ctrRegistro = ControladorRegistro()
         ctrRegistro.desabilitarTodo(
-            arrayOf(txtNivelCapitan, txtJugadoresEspeciales),
-            arrayOf(spinerArena, spinerFormacion, spinerCapitan, spinerTipoPortero),
-            btnEnviarRegistro
+            arrayOf(binding.txtNivelCapitan, binding.txtJugadoresEspeciales),
+            arrayOf(
+                binding.spinerArena,
+                binding.spinerFormacion,
+                binding.spinerCapitan,
+                binding.spinerTipoPortero
+            ),
+            binding.btnEnviarRegistro
         )
     }
 
@@ -89,13 +91,13 @@ class Registro : Fragment() {
             return
         }
         val ctrRegistro = ControladorRegistro()
-        if (!ctrRegistro.validarTxt(txtNivelCapitan, txtJugadoresEspeciales) && !check()) {
-            val arena: Int = spinerArena.selectedItem.toString().toInt()
-            val formacion: String = spinerFormacion.selectedItem.toString()
-            val capitan: String = spinerCapitan.selectedItem.toString()
-            val nivelCapitan: Int = txtNivelCapitan.text.toString().toInt()
-            val tipoPortero: String = spinerTipoPortero.selectedItem.toString()
-            val jugadoresEspeciales: Int = txtJugadoresEspeciales.text.toString().toInt()
+        if (!ctrRegistro.validarTxt(binding.txtNivelCapitan, binding.txtJugadoresEspeciales) && !check()) {
+            val arena: Int = binding.spinerArena.selectedItem.toString().toInt()
+            val formacion: String = binding.spinerFormacion.selectedItem.toString()
+            val capitan: String = binding.spinerCapitan.selectedItem.toString()
+            val nivelCapitan: Int = binding.txtNivelCapitan.text.toString().toInt()
+            val tipoPortero: String = binding.spinerTipoPortero.selectedItem.toString()
+            val jugadoresEspeciales: Int = binding.txtJugadoresEspeciales.text.toString().toInt()
 
             val scoreDatos = ScoreMatch(
                 UUID.randomUUID().toString(),
@@ -113,42 +115,40 @@ class Registro : Fragment() {
 
             val mensaje: String = getString(R.string.mensaje_exito)
             Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show()
-            ctrRegistro.limpiarTxt(txtNivelCapitan, txtJugadoresEspeciales)
+            ctrRegistro.limpiarTxt(binding.txtNivelCapitan, binding.txtJugadoresEspeciales)
         } else {
             Toast.makeText(context, "Debes de llenar todos lo datos", Toast.LENGTH_SHORT).show()
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        _binding = FragmentRegistroBinding.inflate(inflater, container, false)
+        setUpUi()
+        return binding.root
+    }
 
-        val vista: View = inflater.inflate(R.layout.fragment_registro, container, false)
-        btnEnviarRegistro = vista.findViewById(R.id.btnEnviarRegistro)
-        editTextEspeciales = vista.findViewById(R.id.txtJugadoresEspeciales)
-        editTextNivel = vista.findViewById(R.id.txtNivelCapitan)
-        editTextEspeciales.setOnClickListener {
-            if (!conecion(requireContext())) {
-                desabilitar()
-            }
-        }
-        editTextNivel.setOnClickListener {
-            if (!conecion(requireContext())) {
-                desabilitar()
-            }
-        }
-        btnEnviarRegistro.setOnClickListener { obtenerDatos() }
+
+    private fun setUpUi() {
         check()
-        return vista
+        with(binding) {
+            btnEnviarRegistro.setOnClickListener {
+                obtenerDatos()
+            }
+            txtJugadoresEspeciales.setOnClickListener {
+                if (!conecion(requireContext())) {
+                    desabilitar()
+                }
+            }
+            txtNivelCapitan.setOnClickListener {
+                if (!conecion(requireContext())) {
+                    desabilitar()
+                }
+            }
+        }
     }
 
 }

@@ -3,7 +3,7 @@ package com.example.scorematchstatistics.controlador
 import android.content.Context
 import android.widget.TableLayout
 import android.widget.Toast
-import com.example.scorematchstatistics.TableLayoutDinamico
+import com.example.scorematchstatistics.util.TableLayoutDinamico
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference

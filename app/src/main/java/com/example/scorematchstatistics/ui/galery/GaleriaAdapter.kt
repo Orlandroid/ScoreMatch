@@ -1,4 +1,4 @@
-package com.example.scorematchstatistics
+package com.example.scorematchstatistics.ui.galery
 
 import android.content.Context
 import android.content.Intent
@@ -8,15 +8,17 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.scorematchstatistics.JugadorAll
+import com.example.scorematchstatistics.R
 import com.squareup.picasso.Picasso
 
 
-class ListaGaleria(
+class GaleriaAdapter(
     val nombresJugadores: Array<String>,
     val imagenes: Array<Int>,
     val ctx: Context
 ) :
-    RecyclerView.Adapter<ListaGaleria.ViewHolder>() {
+    RecyclerView.Adapter<GaleriaAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val cartaImagen: ImageView = itemView.findViewById(R.id.imagenViewGaleria)

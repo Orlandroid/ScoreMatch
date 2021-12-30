@@ -4,10 +4,10 @@ import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.example.scorematchstatistics.Estadisticas
-import com.example.scorematchstatistics.Galeria
 import com.example.scorematchstatistics.R
-import com.example.scorematchstatistics.Registro
+import com.example.scorematchstatistics.ui.galery.GaleriaFragment
+import com.example.scorematchstatistics.ui.registration.RegistroFragment
+import com.example.scorematchstatistics.ui.stadistics.EstadisticasFragment
 
 private val TAB_TITLES = arrayOf(
     R.string.tab_text_1,
@@ -24,9 +24,9 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
 
     override fun getItem(position: Int): Fragment {
         return when (position) {
-            0 -> Registro()
-            1 -> Estadisticas()
-            else -> Galeria()
+            0 -> RegistroFragment()
+            1 -> EstadisticasFragment()
+            else -> GaleriaFragment()
         }
     }
 

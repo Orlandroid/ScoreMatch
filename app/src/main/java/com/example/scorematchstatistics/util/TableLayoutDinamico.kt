@@ -1,4 +1,4 @@
-package com.example.scorematchstatistics
+package com.example.scorematchstatistics.util
 
 import android.content.Context
 import android.graphics.Typeface
@@ -9,6 +9,7 @@ import android.widget.TableRow
 import android.widget.TextView
 import android.widget.TableLayout
 import androidx.core.content.ContextCompat
+import com.example.scorematchstatistics.R
 
 class TableLayoutDinamico(tabLayout: TableLayout, context: Context) {
 

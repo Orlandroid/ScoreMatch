@@ -3,7 +3,7 @@ package com.example.scorematchstatistics.controlador
 import android.content.Context
 import android.os.Build
 import android.widget.*
-import com.example.scorematchstatistics.PreferenciasValores
+import com.example.scorematchstatistics.util.PreferenciasValores
 import com.google.firebase.database.*
 
 

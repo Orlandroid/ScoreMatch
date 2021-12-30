@@ -1,4 +1,4 @@
-package com.example.scorematchstatistics
+package com.example.scorematchstatistics.util
 
 import android.content.Context
 import android.preference.PreferenceManager.getDefaultSharedPreferences
