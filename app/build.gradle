@@ -4,6 +4,9 @@ plugins {
     id 'kotlin-kapt'
     id 'com.google.gms.google-services'
     id 'kotlin-android-extensions'
+    id 'dagger.hilt.android.plugin'
+    id "androidx.navigation.safeargs"
+
 }
 
 
@@ -53,8 +56,20 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    //Firebase
     implementation platform('com.google.firebase:firebase-bom:26.2.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-database:19.6.0'
+    implementation 'com.google.firebase:firebase-storage:20.0.0'
+
     implementation 'com.squareup.picasso:picasso:2.71828'
+    //Hilt
+    implementation "com.google.dagger:hilt-android:$hiltVersion"
+    kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
+    //Navegation component
+    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+
+
 }

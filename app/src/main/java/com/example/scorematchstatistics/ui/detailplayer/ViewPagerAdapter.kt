@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.scorematchstatistics.R
-import com.squareup.picasso.Picasso
 
 
 class ViewPagerAdapter(private val imagenes: Array<Int>) :

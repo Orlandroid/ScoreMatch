@@ -31,6 +31,8 @@ class RegistroFragment : Fragment() {
     private lateinit var databaseReference: DatabaseReference
 
 
+
+
     @Suppress("DEPRECATION")
     private fun conecion(context: Context): Boolean {
         val con: ConnectivityManager =
