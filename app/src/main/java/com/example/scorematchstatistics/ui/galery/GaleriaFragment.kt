@@ -30,7 +30,7 @@ class GaleriaFragment : Fragment() {
     private fun setUpUi() {
         nombres = requireContext().resources.getStringArray(R.array.nombres_jugadores)
         with(binding) {
-            recyclerGaleria.adapter = GaleriaAdapter(nombres, getImagenId(), requireContext())
+            recyclerGaleria.adapter = GaleriaAdapter(nombres, getImagenId())
             recyclerGaleria.layoutManager = GridLayoutManager(requireContext(), 2)
         }
     }

@@ -9,7 +9,4 @@ data class ScoreMatch(
     var nivel: Int,
     var portero: String,
     var especiales: Int
-) {
-
-}
-
+)

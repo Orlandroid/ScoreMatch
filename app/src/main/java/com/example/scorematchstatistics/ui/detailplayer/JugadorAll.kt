@@ -1,9 +1,9 @@
-package com.example.scorematchstatistics
+package com.example.scorematchstatistics.ui.detailplayer
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.viewpager2.widget.ViewPager2
+import com.example.scorematchstatistics.R
 
 class JugadorAll : AppCompatActivity() {
 

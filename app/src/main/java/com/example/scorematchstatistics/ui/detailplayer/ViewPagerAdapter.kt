@@ -1,4 +1,4 @@
-package com.example.scorematchstatistics
+package com.example.scorematchstatistics.ui.detailplayer
 
 
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.scorematchstatistics.R
 import com.squareup.picasso.Picasso
 
 
@@ -27,7 +28,7 @@ class ViewPagerAdapter(private val imagenes: Array<Int>) :
     override fun getItemCount(): Int = imagenes.size
 
     override fun onBindViewHolder(holder: ViewPagerViewHolder, position: Int) {
-        Picasso.get().load(imagenes[position]).into(holder.Imagen)
+        //Picasso.get().load(imagenes[position]).into(holder.Imagen)
     }
 
 }

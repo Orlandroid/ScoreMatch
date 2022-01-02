@@ -54,7 +54,6 @@ class EstadisticasFragment : Fragment() {
         iniciarDatabase()
         with(binding) {
             btnFiltart.setOnClickListener {
-                listarDatos(binding.spinnerFiltar.get(0))
             }
             spinnerFiltar.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(p0: AdapterView<*>?) {

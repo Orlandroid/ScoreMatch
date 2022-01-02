@@ -8,15 +8,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.scorematchstatistics.JugadorAll
+import com.example.scorematchstatistics.ui.detailplayer.JugadorAll
 import com.example.scorematchstatistics.R
 import com.squareup.picasso.Picasso
 
 
 class GaleriaAdapter(
     val nombresJugadores: Array<String>,
-    val imagenes: Array<Int>,
-    val ctx: Context
+    val imagenes: Array<Int>
 ) :
     RecyclerView.Adapter<GaleriaAdapter.ViewHolder>() {
 
@@ -37,9 +36,9 @@ class GaleriaAdapter(
         holder.cartaTexto.text = nombresJugadores[position]
         Picasso.get().load(imagenes[position]).into(holder.cartaImagen)
         holder.cartaImagen.setOnClickListener {
-            val intento = Intent(ctx, JugadorAll::class.java)
+            val intento = Intent(it.context, JugadorAll::class.java)
             intento.putExtra("jugador", nombresJugadores[position])
-            ctx.startActivity(intento)
+            it.context.startActivity(intento)
         }
     }
 
