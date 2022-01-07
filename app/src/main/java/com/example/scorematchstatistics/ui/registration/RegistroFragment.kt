@@ -13,9 +13,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.example.scorematchstatistics.R
-import com.example.scorematchstatistics.model.Identificador
+import com.example.scorematchstatistics.data.model.Identificador
 import com.example.scorematchstatistics.util.PreferenciasValores
-import com.example.scorematchstatistics.model.ScoreMatch
+import com.example.scorematchstatistics.data.model.ScoreMatch
 import com.example.scorematchstatistics.controlador.AlertMensaje
 import com.example.scorematchstatistics.controlador.ControladorRegistro
 import com.example.scorematchstatistics.databinding.FragmentRegistroBinding

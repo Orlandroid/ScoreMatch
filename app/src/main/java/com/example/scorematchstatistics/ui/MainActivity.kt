@@ -1,4 +1,4 @@
-package com.example.scorematchstatistics
+package com.example.scorematchstatistics.ui
 
 
 import android.os.Bundle
@@ -6,8 +6,9 @@ import android.os.Bundle
 
 import androidx.appcompat.app.AppCompatActivity
 import com.example.scorematchstatistics.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
 

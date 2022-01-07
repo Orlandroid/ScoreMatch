@@ -1,4 +1,4 @@
-package com.example.scorematchstatistics.model
+package com.example.scorematchstatistics.data.model
 
 
 data class ScoreMatch(
