@@ -2,7 +2,6 @@ package com.example.scorematchstatistics.data.db
 
 import androidx.room.Dao
 import androidx.room.Insert
-import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.scorematchstatistics.data.model.Player
 
@@ -15,6 +14,7 @@ interface PlayerDao {
     @Insert()
     suspend fun insertManyPlayersLevel(player: List<Player>)
 
-
+    @Query("SELECT * FROM PLAYER")
+    suspend fun getAllPlayer():List<Player>
 
 }

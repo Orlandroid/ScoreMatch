@@ -1,13 +1,12 @@
 package com.example.scorematchstatistics.data.model
 
-import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
 data class Player(
     @PrimaryKey(autoGenerate = true)
-    val id: Int? = 0,
+    val id: Int = 0,
     val level: Int,
     val name: String,
     val typeOfPlayer: String,

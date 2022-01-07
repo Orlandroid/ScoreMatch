@@ -12,17 +12,19 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ViewModelGalery @Inject constructor(
-    private val localRepository: LocalRepository
+    private val localRepository: LocalRepository,
+    private val databasePlayersProvider: DatabasePlayersProvider
 ) :
     ViewModel() {
 
     init {
         insertManyLevelOfPlayers()
+        println("Iniciando")
     }
 
-    private fun insertManyLevelOfPlayers() {
+    fun insertManyLevelOfPlayers() {
         viewModelScope.launch(Dispatchers.IO) {
-            //localRepository.insertManyPlayer(databasePlayersProvider.getLevelsGuard())
+            localRepository.insertManyPlayer(databasePlayersProvider.getLevelsGuard())
         }
     }
 

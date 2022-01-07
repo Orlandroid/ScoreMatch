@@ -1,10 +1,12 @@
 package com.example.scorematchstatistics.data.db
 
 import com.example.scorematchstatistics.data.model.Player
+import javax.inject.Inject
+import javax.inject.Singleton
 
 
-
-class DatabasePlayersProvider {
+@Singleton
+class DatabasePlayersProvider @Inject constructor() {
 
 
     companion object {

@@ -10,12 +10,12 @@ class LocalRepository @Inject constructor(private val dao: PlayerDao) {
         dao.insertPlayerLevel(player)
     }
 
-    suspend fun insertManyPlayer(players: List<Player>){
+    suspend fun insertManyPlayer(players: List<Player>) {
         dao.insertManyPlayersLevel(players)
     }
 
-    suspend fun getAllLevelsOfPlayers() {
-
+    suspend fun getAllLevelsOfPlayers(): List<Player> {
+        return dao.getAllPlayer()
     }
 
     suspend fun getLevelOfPlayer(namePlayer: Player) {
