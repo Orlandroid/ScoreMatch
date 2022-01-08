@@ -19,7 +19,6 @@ class GaleriaFragment : Fragment() {
 
     private var _binding: FragmentGaleriaBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: ViewModelGalery by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,7 +30,6 @@ class GaleriaFragment : Fragment() {
     }
 
     private fun setUpUi() {
-        viewModel.insertManyLevelOfPlayers()
         nombres = requireContext().resources.getStringArray(R.array.nombres_jugadores)
         with(binding) {
             recyclerGaleria.adapter = GaleriaAdapter(nombres, getImagenId())

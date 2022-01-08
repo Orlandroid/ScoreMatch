@@ -10,7 +10,7 @@ class PreferencesDatabase @Inject constructor(sharedPreferences: SharedPreferenc
         savePreferenceKey(IS_PLAYERS_LEVEL_SAVE, true)
     }
 
-    fun getIsPlayerDataLeveSave(): Boolean {
+    fun isPlayerDataLeveSave(): Boolean {
         return preferences.getBoolean(IS_PLAYERS_LEVEL_SAVE, false)
     }
 

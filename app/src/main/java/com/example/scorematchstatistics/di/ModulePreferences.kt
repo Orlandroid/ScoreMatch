@@ -2,6 +2,7 @@ package com.example.scorematchstatistics.di
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.example.scorematchstatistics.data.preferences.PreferencesDatabase
 import com.example.scorematchstatistics.data.preferences.PreferencesManager
 import com.example.scorematchstatistics.util.SHARE_PREFERENCES
 import dagger.Module
@@ -26,6 +27,12 @@ object ModulePreferences {
     @Provides
     fun providePreferencesManager(sharedPreferences: SharedPreferences): PreferencesManager {
         return PreferencesManager(sharedPreferences)
+    }
+
+    @Singleton
+    @Provides
+    fun providePreferencesDatabase(sharedPreferences: SharedPreferences): PreferencesDatabase {
+        return PreferencesDatabase(sharedPreferences)
     }
 
 
