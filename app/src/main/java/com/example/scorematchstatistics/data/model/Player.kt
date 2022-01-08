@@ -10,6 +10,7 @@ data class Player(
     val level: Int,
     val name: String,
     val typeOfPlayer: String,
+    val image:Int,
     val speed: Int,
     val height: Int,
     val strenght: Int,
