@@ -7,14 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.scorematchstatistics.R
 import com.example.scorematchstatistics.data.Result
+import com.example.scorematchstatistics.data.model.Player
 import com.example.scorematchstatistics.databinding.FragmentGaleriaBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class GaleriaFragment : Fragment() {
+class GaleriaFragment : Fragment() ,ListerElementsGalery{
 
 
 
@@ -32,22 +33,27 @@ class GaleriaFragment : Fragment() {
         return binding.root
     }
 
-    private fun setUpUi() {
+    private fun getListener():ListerElementsGalery{
+        return this
+    }
 
+    private fun setUpUi() {
+        viewModel.getAllPlayers()
     }
 
     private fun setUpObservers(){
-        viewModel.player.observe(viewLifecycleOwner,{
+        viewModel.players.observe(viewLifecycleOwner,{
             when(it){
                 is Result.Success ->{
-                    binding.recyclerGaleria.adapter=GaleriaAdapter(it.data)
+                    binding.recyclerGaleria.adapter=GaleriaAdapter(it.data,getListener())
                     binding.recyclerGaleria.layoutManager=GridLayoutManager(requireContext(),2)
+                    binding.progressBar2.visibility=View.INVISIBLE
                 }
                 is Result.Loading ->{
-                    Log.w(this.tag,"CARGANDO")
+                    binding.progressBar2.visibility=View.VISIBLE
                 }
                 is Result.Error->{
-                    Log.w(this.tag,"CARGANDO")
+                    binding.progressBar2.visibility=View.INVISIBLE
                 }
             }
         })
@@ -56,6 +62,11 @@ class GaleriaFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun clickOnPlayer(player: Player) {
+        val action = GaleriaFragmentDirections.actionGaleriaFragmentToPlayerAllLevels(player)
+        findNavController().navigate(action)
     }
 
 

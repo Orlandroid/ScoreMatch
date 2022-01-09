@@ -15,6 +15,9 @@ interface PlayerDao {
     suspend fun insertManyPlayersLevel(player: List<Player>)
 
     @Query("SELECT * FROM PLAYER WHERE level = 1")
-    suspend fun getAllPlayer():List<Player>
+    suspend fun getAllPlayer(): List<Player>
+
+    @Query("SELECT * FROM PLAYER WHERE level=:level AND name=:name")
+    suspend fun getLevelOfPlayer(level: Int, name: String):Player
 
 }

@@ -3,11 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/viewPagerFragment">
+    app:startDestination="@id/galeriaFragment">
 
     <fragment
-        tools:layout="@layout/view_pager_fragment"
-        android:id="@+id/viewPagerFragment"
-        android:name="com.example.scorematchstatistics.ui.main.ViewPagerFragment"
-        android:label="ViewPagerFragment" />
+        android:id="@+id/playerAllLevels"
+        android:name="com.example.scorematchstatistics.ui.detailplayer.PlayerAllLevels"
+        android:label="fragment_player_all_levels"
+        tools:layout="@layout/fragment_player_all_levels" >
+        <argument
+            android:name="player"
+            app:argType="com.example.scorematchstatistics.data.model.Player" />
+    </fragment>
+    <fragment
+        android:id="@+id/galeriaFragment"
+        android:name="com.example.scorematchstatistics.ui.galery.GaleriaFragment"
+        android:label="fragment_galeria"
+        tools:layout="@layout/fragment_galeria" >
+        <action
+            android:id="@+id/action_galeriaFragment_to_playerAllLevels"
+            app:destination="@id/playerAllLevels" />
+    </fragment>
 </navigation>

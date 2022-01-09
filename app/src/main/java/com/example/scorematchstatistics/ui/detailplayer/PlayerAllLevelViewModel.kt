@@ -1,5 +1,6 @@
-package com.example.scorematchstatistics.ui.galery
+package com.example.scorematchstatistics.ui.detailplayer
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,33 +14,24 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-
 @HiltViewModel
-class ViewModelGalery @Inject constructor(
+class PlayerAllLevelViewModel @Inject constructor(
     private val localRepository: LocalRepository
-) :
-    ViewModel() {
+) : ViewModel() {
 
 
-    private val _players = MutableLiveData<Result<List<Player>>>()
-    val players: LiveData<Result<List<Player>>> get() = _players
+    private val _player = MutableLiveData<Result<Player>>()
+    val player: LiveData<Result<Player>> get() = _player
 
-    init {
-        getAllPlayers()
-    }
-
-    fun getAllPlayers() {
+    fun getLevelOfPlayer(level: Int, name: String) {
+        _player.value = Result.Loading
         viewModelScope.launch(Dispatchers.IO) {
+            val reponse = localRepository.getLevelOfPlayer(level, name)
             withContext(Dispatchers.Main) {
-                _players.value = Result.Loading
-            }
-            val players = localRepository.getAllLevelsOfPlayers()
-            withContext(Dispatchers.Main) {
-                _players.value = Result.Success(players)
-
+                _player.value = Result.Success(reponse)
+                Log.w("RESPONSE",reponse.toString())
             }
         }
     }
-
 
 }

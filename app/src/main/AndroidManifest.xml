@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ScoreMatchStatistics">
-        <activity android:name=".ui.detailplayer.JugadorAll" />
+        <activity android:name=".ui.detailplayer.PlayerAllLevels" />
         <activity
             android:name=".ui.MainActivity"
             android:label="@string/app_name"

@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    tools:context=".ui.detailplayer.PlayerAllLevels"
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -10,7 +11,7 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/button_next_level"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -36,7 +37,7 @@
             app:strokeWidth="2dp">
 
             <ImageView
-                android:id="@+id/imagenViewPager"
+                android:id="@+id/imagen_player"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:src="@drawable/c_amenaza"
@@ -79,7 +80,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textview2" />
 
                 <TextView
-                    android:id="@+id/reponse"
+                    android:id="@+id/response"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"

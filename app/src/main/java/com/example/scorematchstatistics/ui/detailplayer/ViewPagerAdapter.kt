@@ -14,13 +14,13 @@ class ViewPagerAdapter(private val imagenes: Array<Int>) :
 
 
     class ViewPagerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val Imagen: ImageView = itemView.findViewById(R.id.imagenViewPager)
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewPagerViewHolder {
         val view =
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.elemento_view_pager, parent, false)
+                .inflate(R.layout.fragment_player_all_levels, parent, false)
         return ViewPagerViewHolder(view)
     }
 

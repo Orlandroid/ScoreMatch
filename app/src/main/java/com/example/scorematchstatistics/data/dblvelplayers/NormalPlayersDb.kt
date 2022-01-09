@@ -222,8 +222,7 @@ class NormalPlayersDb @Inject constructor() {
         Player( level = 7,name = MENACE, typeOfPlayer = TYPE_NORMAL, speed = 27, height = 19, strenght = 23,power =  23, skill = 16, resposne = 22,image = imageMenace),
         Player( level = 8,name = MENACE, typeOfPlayer = TYPE_NORMAL, speed = 30, height = 21, strenght = 26,power =  26, skill = 17, resposne = 25,image = imageMenace),
         Player( level = 9,name = MENACE, typeOfPlayer = TYPE_NORMAL, speed = 32, height = 23, strenght = 28,power =  28, skill = 19, resposne = 27,image = imageMenace),
-        Player( level = 10,name = MENACE, typeOfPlayer = TYPE_NORMAL, speed = 35, height = 25, strenght = 30,power =  30, skill = 20, resposne = 30,image = imageMenace),
-
+        Player( level = 10,name = MENACE, typeOfPlayer = TYPE_NORMAL, speed = 35, height = 25, strenght = 30,power =  30, skill = 20, resposne = 30,image = imageMenace)
     )
 
 
