@@ -10,7 +10,7 @@ import kotlinx.parcelize.Parcelize
 data class Player(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
-    val level: Int?=0,
+    val level: Int,
     val name: String,
     val typeOfPlayer: String,
     val image:Int,

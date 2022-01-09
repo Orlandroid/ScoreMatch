@@ -209,7 +209,7 @@ class NormalPlayersDb @Inject constructor() {
         Player( level = 7,name = PROWLER, typeOfPlayer = TYPE_NORMAL, speed = 27, height = 12, strenght = 12,power =  19, skill = 12, resposne = 40,image = imageProwler),
         Player( level = 8,name = PROWLER, typeOfPlayer = TYPE_NORMAL, speed = 30, height = 13, strenght = 13,power =  21, skill = 13, resposne = 44,image = imageProwler),
         Player( level = 9,name = PROWLER, typeOfPlayer = TYPE_NORMAL, speed = 32, height = 14, strenght = 14,power =  23, skill = 14, resposne = 47,image = imageProwler),
-        Player( level = 10,name = EXPLORER, typeOfPlayer = TYPE_NORMAL, speed = 35, height = 15, strenght = 15,power =  25, skill = 15, resposne = 50,image = imageProwler)
+        Player( level = 10,name = PROWLER, typeOfPlayer = TYPE_NORMAL, speed = 35, height = 15, strenght = 15,power =  25, skill = 15, resposne = 50,image = imageProwler)
     )
 
     private val menaceLevels = listOf(
