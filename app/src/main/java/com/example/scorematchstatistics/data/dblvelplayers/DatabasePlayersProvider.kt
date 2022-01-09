@@ -1,6 +1,5 @@
-package com.example.scorematchstatistics.data.db
+package com.example.scorematchstatistics.data.dblvelplayers
 
-import com.example.scorematchstatistics.data.dblvelplayers.NormalPlayersDb
 import com.example.scorematchstatistics.data.model.Player
 import javax.inject.Inject
 import javax.inject.Singleton

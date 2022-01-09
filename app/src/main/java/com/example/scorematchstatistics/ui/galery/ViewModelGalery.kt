@@ -36,7 +36,6 @@ class ViewModelGalery @Inject constructor(
             val players = localRepository.getAllLevelsOfPlayers()
             withContext(Dispatchers.Main) {
                 _players.value = Result.Success(players)
-
             }
         }
     }

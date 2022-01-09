@@ -1,7 +1,7 @@
 package com.example.scorematchstatistics
 
 import android.app.Application
-import com.example.scorematchstatistics.data.db.DatabasePlayersProvider
+import com.example.scorematchstatistics.data.dblvelplayers.DatabasePlayersProvider
 import com.example.scorematchstatistics.data.preferences.PreferencesDatabase
 import com.example.scorematchstatistics.data.repository.LocalRepository
 import dagger.hilt.android.HiltAndroidApp
