@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.scorematchstatistics.data.Result
 import com.example.scorematchstatistics.data.model.Player
@@ -37,8 +38,12 @@ class PlayerAllLevels : Fragment() {
     private fun setUpUi() {
         viewModel.getLevelOfPlayer(level, args.player.name)
         with(binding) {
+            toolbarLayout.toolbarBack.setOnClickListener {
+                findNavController().popBackStack()
+            }
+            toolbarLayout.toolbarTitle.text=args.player.name
             imagenPlayer.setImageResource(args.player.image)
-            buttonNextLevel.setOnClickListener {
+            imagenPlayer.setOnClickListener {
                 updateLevel()
             }
         }
