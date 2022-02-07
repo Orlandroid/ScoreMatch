@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.scorematchstatistics.data.Result
+import com.example.scorematchstatistics.data.state.Result
 import com.example.scorematchstatistics.data.model.Player
 import com.example.scorematchstatistics.databinding.FragmentPlayerAllLevelsBinding
 import dagger.hilt.android.AndroidEntryPoint

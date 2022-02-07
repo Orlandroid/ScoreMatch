@@ -1,11 +1,12 @@
 package com.example.scorematchstatistics.data.repository
 
 
-import com.example.scorematchstatistics.data.Result
+import com.example.scorematchstatistics.data.state.Result
 import com.example.scorematchstatistics.data.api.Api
 import com.example.scorematchstatistics.data.db.PlayerDao
 import com.example.scorematchstatistics.data.model.Player
 import com.example.scorematchstatistics.data.model.ScorePostResponse
+import com.example.scorematchstatistics.data.state.ApiState
 import javax.inject.Inject
 
 class Repository @Inject constructor(private val dao: PlayerDao, private val api: Api) {

@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.scorematchstatistics.data.Result
+import com.example.scorematchstatistics.data.state.Result
 import com.example.scorematchstatistics.data.model.Player
 import com.example.scorematchstatistics.data.repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel

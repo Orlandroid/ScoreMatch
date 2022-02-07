@@ -1,4 +1,4 @@
-package com.example.scorematchstatistics.data
+package com.example.scorematchstatistics.data.state
 
 import java.lang.Exception
 
