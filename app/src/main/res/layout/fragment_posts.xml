@@ -6,6 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".ui.posts.PostsFragment">
 
+    <include
+        android:id="@+id/toolbar_layout"
+        layout="@layout/toolbar_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
@@ -20,11 +27,11 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_posts"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/item_post"
+        android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_layout"
+        tools:listitem="@layout/item_post" />
 </androidx.constraintlayout.widget.ConstraintLayout>

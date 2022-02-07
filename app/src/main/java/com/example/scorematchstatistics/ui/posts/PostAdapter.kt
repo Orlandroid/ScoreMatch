@@ -1,17 +1,13 @@
 package com.example.scorematchstatistics.ui.posts
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.scorematchstatistics.data.model.ScorePostResponse
 import com.example.scorematchstatistics.databinding.ItemPostBinding
 import com.squareup.picasso.Picasso
-import java.util.ArrayList
 
-
-class PostAdapter() :
+class PostAdapter(private val listener:ListenerClickOnPost) :
     RecyclerView.Adapter<PostAdapter.ViewHolder>() {
 
 
@@ -20,6 +16,10 @@ class PostAdapter() :
     fun setData(posts: List<ScorePostResponse.DataResponse>) {
         listOfPost = posts
         notifyDataSetChanged()
+    }
+
+    interface ListenerClickOnPost{
+        fun clickOnPost(imageUrl:String)
     }
 
 
@@ -41,6 +41,9 @@ class PostAdapter() :
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         viewHolder.bind(listOfPost[position])
+        viewHolder.itemView.setOnClickListener {
+            listOfPost[position].url?.let { it1 -> listener.clickOnPost(it1) }
+        }
     }
 
 

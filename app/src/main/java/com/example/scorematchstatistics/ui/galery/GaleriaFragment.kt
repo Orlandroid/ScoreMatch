@@ -14,13 +14,12 @@ import com.example.scorematchstatistics.databinding.FragmentGaleriaBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class GaleriaFragment : Fragment() ,ListerElementsGalery{
-
+class GaleriaFragment : Fragment(), ListerElementsGalery {
 
 
     private var _binding: FragmentGaleriaBinding? = null
     private val binding get() = _binding!!
-    private val viewModel:ViewModelGalery by viewModels()
+    private val viewModel: ViewModelGalery by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,15 +31,21 @@ class GaleriaFragment : Fragment() ,ListerElementsGalery{
         return binding.root
     }
 
-    private fun getListener():ListerElementsGalery{
+    private fun getListener(): ListerElementsGalery {
         return this
     }
 
     private fun setUpUi() {
         viewModel.getAllPlayers()
+        with(binding) {
+            toolbarLayout.toolbarTitle.text = "Galeria"
+            toolbarLayout.toolbarBack.setOnClickListener {
+                findNavController().popBackStack()
+            }
+        }
     }
 
-    private fun setUpObservers(){
+    private fun setUpObservers() {
         viewModel.players.observe(viewLifecycleOwner) {
             when (it) {
                 is Result.Success -> {
@@ -64,9 +69,7 @@ class GaleriaFragment : Fragment() ,ListerElementsGalery{
     }
 
     override fun clickOnPlayer(player: Player) {
-       // val action = GaleriaFragmentDirections.actionGaleriaFragmentToPlayerAllLevels(player)
-        //findNavController().navigate(action)
-        val action = GaleriaFragmentDirections.actionGaleriaFragmentToPostsFragment()
+        val action = GaleriaFragmentDirections.actionGaleriaFragmentToPlayerAllLevels(player)
         findNavController().navigate(action)
     }
 
