@@ -2,9 +2,10 @@ package com.example.scorematchstatistics.di
 
 import android.content.Context
 import androidx.room.Room
+import com.example.scorematchstatistics.data.api.Api
 import com.example.scorematchstatistics.data.db.PlayerDao
 import com.example.scorematchstatistics.data.db.ScoreMatchDatabase
-import com.example.scorematchstatistics.data.repository.LocalRepository
+import com.example.scorematchstatistics.data.repository.Repository
 import com.example.scorematchstatistics.util.DATABASE_NAME
 import dagger.Module
 import dagger.Provides
@@ -31,10 +32,10 @@ object ModuleDb {
 
     @Singleton
     @Provides
-    fun provideAppointmentDao(db: ScoreMatchDatabase) = db.playerDao()
+    fun providePlayersDao(db: ScoreMatchDatabase) = db.playerDao()
 
     @Singleton
     @Provides
-    fun provideAppoinmentRepository(dao: PlayerDao) = LocalRepository(dao)
+    fun provideRepository(dao: PlayerDao, api: Api) = Repository(dao, api)
 
 }

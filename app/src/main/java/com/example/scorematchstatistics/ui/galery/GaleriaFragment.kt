@@ -42,21 +42,21 @@ class GaleriaFragment : Fragment() ,ListerElementsGalery{
     }
 
     private fun setUpObservers(){
-        viewModel.players.observe(viewLifecycleOwner,{
-            when(it){
-                is Result.Success ->{
-                    binding.recyclerGaleria.adapter=GaleriaAdapter(it.data,getListener())
-                    binding.recyclerGaleria.layoutManager=GridLayoutManager(requireContext(),2)
-                    binding.progressBar2.visibility=View.INVISIBLE
+        viewModel.players.observe(viewLifecycleOwner) {
+            when (it) {
+                is Result.Success -> {
+                    binding.recyclerGaleria.adapter = GaleriaAdapter(it.data, getListener())
+                    binding.recyclerGaleria.layoutManager = GridLayoutManager(requireContext(), 2)
+                    binding.progressBar2.visibility = View.INVISIBLE
                 }
-                is Result.Loading ->{
-                    binding.progressBar2.visibility=View.VISIBLE
+                is Result.Loading -> {
+                    binding.progressBar2.visibility = View.VISIBLE
                 }
-                is Result.Error->{
-                    binding.progressBar2.visibility=View.INVISIBLE
+                is Result.Error -> {
+                    binding.progressBar2.visibility = View.INVISIBLE
                 }
             }
-        })
+        }
     }
 
     override fun onDestroyView() {
@@ -65,7 +65,9 @@ class GaleriaFragment : Fragment() ,ListerElementsGalery{
     }
 
     override fun clickOnPlayer(player: Player) {
-        val action = GaleriaFragmentDirections.actionGaleriaFragmentToPlayerAllLevels(player)
+       // val action = GaleriaFragmentDirections.actionGaleriaFragmentToPlayerAllLevels(player)
+        //findNavController().navigate(action)
+        val action = GaleriaFragmentDirections.actionGaleriaFragmentToPostsFragment()
         findNavController().navigate(action)
     }
 

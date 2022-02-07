@@ -1,11 +1,18 @@
 package com.example.scorematchstatistics.data.repository
 
-import androidx.room.Query
+
+import com.example.scorematchstatistics.data.Result
+import com.example.scorematchstatistics.data.api.Api
 import com.example.scorematchstatistics.data.db.PlayerDao
 import com.example.scorematchstatistics.data.model.Player
+import com.example.scorematchstatistics.data.model.ScorePostResponse
 import javax.inject.Inject
 
-class LocalRepository @Inject constructor(private val dao: PlayerDao) {
+class Repository @Inject constructor(private val dao: PlayerDao, private val api: Api) {
+
+    suspend fun getPostScoreMatch(): ScorePostResponse {
+        return api.getPostScoreMatch()
+    }
 
     suspend fun insertPlayerLevel(player: Player) {
         dao.insertPlayerLevel(player)
@@ -19,7 +26,7 @@ class LocalRepository @Inject constructor(private val dao: PlayerDao) {
         return dao.getAllPlayer()
     }
 
-    suspend fun getLevelOfPlayer(level: Int, name: String):Player {
+    suspend fun getLevelOfPlayer(level: Int, name: String): Player {
         return dao.getLevelOfPlayer(level, name)
     }
 

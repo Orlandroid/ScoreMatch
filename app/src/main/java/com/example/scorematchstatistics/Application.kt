@@ -3,7 +3,7 @@ package com.example.scorematchstatistics
 import android.app.Application
 import com.example.scorematchstatistics.data.dblvelplayers.DatabasePlayersProvider
 import com.example.scorematchstatistics.data.preferences.PreferencesDatabase
-import com.example.scorematchstatistics.data.repository.LocalRepository
+import com.example.scorematchstatistics.data.repository.Repository
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -14,7 +14,7 @@ import javax.inject.Inject
 class Application : Application() {
 
     @Inject
-    lateinit var localRepository: LocalRepository
+    lateinit var localRepository: Repository
     @Inject
     lateinit var preferencesDatabase: PreferencesDatabase
     @Inject
@@ -24,7 +24,6 @@ class Application : Application() {
         super.onCreate()
         populateDatabaseLevelPlayers()
     }
-
 
     private fun populateDatabaseLevelPlayers() {
         if (!preferencesDatabase.isPlayerDataLeveSave()) {

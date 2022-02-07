@@ -22,5 +22,13 @@
         <action
             android:id="@+id/action_galeriaFragment_to_playerAllLevels"
             app:destination="@id/playerAllLevels" />
+        <action
+            android:id="@+id/action_galeriaFragment_to_postsFragment"
+            app:destination="@id/postsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/postsFragment"
+        android:name="com.example.scorematchstatistics.ui.posts.PostsFragment"
+        android:label="fragment_posts"
+        tools:layout="@layout/fragment_posts" />
 </navigation>

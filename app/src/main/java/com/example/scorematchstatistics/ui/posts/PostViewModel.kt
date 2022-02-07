@@ -1,4 +1,4 @@
-package com.example.scorematchstatistics.ui.detailplayer
+package com.example.scorematchstatistics.ui.posts
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.scorematchstatistics.data.Result
-import com.example.scorematchstatistics.data.model.Player
+import com.example.scorematchstatistics.data.model.ScorePostResponse
 import com.example.scorematchstatistics.data.repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -14,24 +14,23 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
+
 @HiltViewModel
-class PlayerAllLevelViewModel @Inject constructor(
-    private val localRepository: Repository
-) : ViewModel() {
+class PostViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
 
 
-    private val _player = MutableLiveData<Result<Player>>()
-    val player: LiveData<Result<Player>> get() = _player
+    private val _posts = MutableLiveData<ScorePostResponse>()
+    val posts: LiveData<ScorePostResponse> get() = _posts
 
-    fun getLevelOfPlayer(level: Int, name: String) {
-        _player.value = Result.Loading
+    fun getPostScoreMatch() {
         viewModelScope.launch(Dispatchers.IO) {
-            val reponse = localRepository.getLevelOfPlayer(level, name)
+            val response = repository.getPostScoreMatch()
             withContext(Dispatchers.Main) {
-                _player.value = Result.Success(reponse)
-                Log.w("RESPONSE",reponse.toString())
+                _posts.value = response
             }
+
         }
     }
+
 
 }
