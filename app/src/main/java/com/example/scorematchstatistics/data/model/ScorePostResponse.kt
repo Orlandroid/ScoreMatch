@@ -3,14 +3,16 @@ package com.example.scorematchstatistics.data.model
 
 data class ScorePostResponse(
     val data: Chidren
-){
+) {
     data class Chidren(
+        val after: String?,
         val children: List<Data>
     )
 
     data class Data(
-        val data:DataResponse
+        val data: DataResponse
     )
+
     data class DataResponse(
         val title: String?,
         val thumbnail: String?,

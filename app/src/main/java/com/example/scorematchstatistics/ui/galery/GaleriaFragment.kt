@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.scorematchstatistics.data.state.Result
 import com.example.scorematchstatistics.data.model.Player
 import com.example.scorematchstatistics.databinding.FragmentGaleriaBinding
+import com.example.scorematchstatistics.util.AlertDialogMessages
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -46,10 +47,10 @@ class GaleriaFragment : Fragment(), ListerElementsGalery {
     }
 
     private fun setUpObservers() {
-        viewModel.players.observe(viewLifecycleOwner) {
-            when (it) {
+        viewModel.players.observe(viewLifecycleOwner) { result ->
+            when (result) {
                 is Result.Success -> {
-                    binding.recyclerGaleria.adapter = GaleriaAdapter(it.data, getListener())
+                    binding.recyclerGaleria.adapter = GaleriaAdapter(result.data, getListener())
                     binding.recyclerGaleria.layoutManager = GridLayoutManager(requireContext(), 2)
                     binding.progressBar2.visibility = View.INVISIBLE
                 }
@@ -58,6 +59,8 @@ class GaleriaFragment : Fragment(), ListerElementsGalery {
                 }
                 is Result.Error -> {
                     binding.progressBar2.visibility = View.INVISIBLE
+                    val dialog = AlertDialogMessages(2, result.error)
+                    activity?.let { dialog.show(it.supportFragmentManager, "alertMessage") }
                 }
             }
         }

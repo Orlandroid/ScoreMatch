@@ -1,6 +1,7 @@
 package com.example.scorematchstatistics.ui.detailplayer
 
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,9 +11,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.scorematchstatistics.R
 import com.example.scorematchstatistics.data.state.Result
 import com.example.scorematchstatistics.data.model.Player
 import com.example.scorematchstatistics.databinding.FragmentPlayerAllLevelsBinding
+import com.example.scorematchstatistics.util.AlertDialogMessages
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -51,6 +54,11 @@ class PlayerAllLevels : Fragment() {
 
     private fun updateLevel() {
         level++
+        if (level%2==0){
+            binding.materialCardView.setCardBackgroundColor(resources.getColor(R.color.azul))
+        }else{
+            binding.materialCardView.setCardBackgroundColor(resources.getColor(R.color.primary))
+        }
         viewModel.getLevelOfPlayer(level, args.player.name)
         if (level == 10) {
             level = 0
@@ -70,19 +78,20 @@ class PlayerAllLevels : Fragment() {
     }
 
     private fun setUpObservers() {
-        viewModel.player.observe(viewLifecycleOwner, {
-            when (it) {
+        viewModel.player.observe(viewLifecycleOwner) { result ->
+            when (result) {
                 is Result.Success -> {
-                    setFeaturesPlayer(it.data)
+                    setFeaturesPlayer(result.data)
                 }
                 is Result.Loading -> {
                     Log.w(this.tag, "CARGANDO")
                 }
                 is Result.Error -> {
-                    Log.w(this.tag, "CARGANDO")
+                    val dialog = AlertDialogMessages(2,result.error)
+                    activity?.let { dialog.show(it.supportFragmentManager, "alertMessage") }
                 }
             }
-        })
+        }
     }
 
     override fun onDestroyView() {

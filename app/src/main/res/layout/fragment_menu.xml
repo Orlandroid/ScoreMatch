@@ -7,10 +7,11 @@
     tools:context=".ui.menu.MenuFragment">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:orientation="vertical"
         android:id="@+id/recycler_menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

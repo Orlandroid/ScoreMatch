@@ -6,11 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.scorematchstatistics.R
 import com.example.scorematchstatistics.data.model.ScorePostResponse
 import com.example.scorematchstatistics.data.state.Result
 import com.example.scorematchstatistics.databinding.FragmentPostsBinding
+import com.example.scorematchstatistics.util.AlertDialogMessages
+import com.faltenreich.skeletonlayout.Skeleton
+import com.faltenreich.skeletonlayout.applySkeleton
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.ArrayList
 
@@ -21,6 +26,7 @@ class PostsFragment : Fragment(), PostAdapter.ListenerClickOnPost {
     private val binding get() = _binding!!
     private val viewModel: PostViewModel by viewModels()
     private val adapter = PostAdapter(this)
+    private lateinit var skeleton: Skeleton
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,6 +46,7 @@ class PostsFragment : Fragment(), PostAdapter.ListenerClickOnPost {
             toolbarLayout.toolbarBack.setOnClickListener {
                 findNavController().popBackStack()
             }
+            skeleton = recyclerPosts.applySkeleton(R.layout.item_post, 4)
         }
     }
 
@@ -48,8 +55,10 @@ class PostsFragment : Fragment(), PostAdapter.ListenerClickOnPost {
             when (scoreMatchResponse) {
                 is Result.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE
+                    skeleton.showSkeleton()
                 }
                 is Result.Success -> {
+                    skeleton.showOriginal()
                     binding.progressBar.visibility = View.GONE
                     val posts = ArrayList<ScorePostResponse.DataResponse>()
                     scoreMatchResponse.data.data.children.forEach { postResponse ->
@@ -59,6 +68,16 @@ class PostsFragment : Fragment(), PostAdapter.ListenerClickOnPost {
                         }
                     }
                     adapter.setData(posts = posts)
+                }
+                is Result.ErrorNetwork -> {
+                    val dialog = AlertDialogMessages(2, scoreMatchResponse.error)
+                    activity?.let { dialog.show(it.supportFragmentManager, "alertMessage") }
+                    findNavController().popBackStack()
+                }
+                is Result.Error -> {
+                    val dialog = AlertDialogMessages(2, scoreMatchResponse.error)
+                    activity?.let { dialog.show(it.supportFragmentManager, "alertMessage") }
+                    findNavController().popBackStack()
                 }
             }
         }

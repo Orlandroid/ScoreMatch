@@ -1,14 +1,15 @@
 package com.example.scorematchstatistics.data.api
-
-import com.example.scorematchstatistics.data.state.Result
 import com.example.scorematchstatistics.data.model.ScorePostResponse
-import com.example.scorematchstatistics.data.state.ApiState
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface Api {
 
     @GET("/score")
     suspend fun getPostScoreMatch(): ScorePostResponse
+
+    @GET("/score")
+    suspend fun getNextPage(@Query("after") after: String): ScorePostResponse
 
 
 }
