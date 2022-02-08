@@ -12,8 +12,7 @@
 - Shared Preferences  
 - Control de versiones GIT 
 
-** Video de demostracion https://www.youtube.com/watch?v=hGond69ACLU
-
+## Video de demostracion https://www.youtube.com/watch?v=JbyBK6CXJlQ
  <table>
   <tr>
     <td><strong>Menu</strong></td>
@@ -39,12 +38,6 @@
   
   
 </table>
-
-  
-  
-  <video src="https://www.youtube.com/watch?v=hGond69ACLU" width="320" height="200" controls preload></video>
-  
-  [Video Review](https://www.youtube.com/watch?v=hGond69ACLU)
 
 
 
