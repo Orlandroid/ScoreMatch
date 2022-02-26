@@ -61,12 +61,15 @@ class AlertDialogMessages(
         when (kindOfMessage) {
             0 -> {
                 binding.headerDialog.setCardBackgroundColor(resources.getColor(SUCCES_MESSAGE))
+                binding.titleHeader.text = "Succes"
             }
             1 -> {
                 binding.headerDialog.setCardBackgroundColor(resources.getColor(WARNING_MESSAGE))
+                binding.titleHeader.text = "Warning"
             }
             2 -> {
                 binding.headerDialog.setCardBackgroundColor(resources.getColor(ERROR_MESSAGE))
+                binding.titleHeader.text = "Error"
             }
         }
     }
