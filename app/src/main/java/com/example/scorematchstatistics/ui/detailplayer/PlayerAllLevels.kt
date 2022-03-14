@@ -1,7 +1,4 @@
 package com.example.scorematchstatistics.ui.detailplayer
-
-
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -45,20 +42,14 @@ class PlayerAllLevels : Fragment() {
                 findNavController().popBackStack()
             }
             toolbarLayout.toolbarTitle.text=args.player.name
-            imagenPlayer.setImageResource(args.player.image)
-            imagenPlayer.setOnClickListener {
+            imagePlayer.setImageResource(args.player.image)
+            imagePlayer.setOnClickListener {
                 updateLevel()
             }
         }
     }
 
     private fun updateLevel() {
-        level++
-        if (level%2==0){
-            binding.materialCardView.setCardBackgroundColor(resources.getColor(R.color.azul))
-        }else{
-            binding.materialCardView.setCardBackgroundColor(resources.getColor(R.color.primary))
-        }
         viewModel.getLevelOfPlayer(level, args.player.name)
         if (level == 10) {
             level = 0
@@ -67,13 +58,27 @@ class PlayerAllLevels : Fragment() {
 
     private fun setFeaturesPlayer(player: Player) {
         with(binding) {
-            nivel.text = player.level.toString()
-            speed.text = player.speed.toString()
-            heigth.text = player.height.toString()
-            strength.text = player.strenght.toString()
-            power.text = player.power.toString()
-            skill.text = player.skill.toString()
-            response.text = player.resposne.toString()
+            velocidad.tvValor.text = player.speed.toString()
+            altura.tvValor.text = player.height.toString()
+            fuerza.tvValor.text = player.strenght.toString()
+            potencia.tvValor.text = player.power.toString()
+            habilidad.tvValor.text = player.skill.toString()
+            respuesta.tvValor.text = player.resposne.toString()
+
+            velocidad.imageEstadistica.setImageResource(R.drawable.running)
+            altura.imageEstadistica.setImageResource(R.drawable.altura)
+            fuerza.imageEstadistica.setImageResource(R.drawable.brazo)
+            potencia.imageEstadistica.setImageResource(R.drawable.ball)
+            habilidad.imageEstadistica.setImageResource(R.drawable.shoe)
+            respuesta.imageEstadistica.setImageResource(R.drawable.thinking)
+
+            velocidad.tvNombreEstadistica.text = "Velocidad"
+            altura.tvNombreEstadistica.text = "Altura"
+            fuerza.tvNombreEstadistica.text = "Fuerza"
+            potencia.tvNombreEstadistica.text = "Potencia"
+            habilidad.tvNombreEstadistica.text = "Habilidad"
+            respuesta.tvNombreEstadistica.text = "Respuesta"
+
         }
     }
 
