@@ -3,6 +3,8 @@ package com.example.scorematchstatistics.data.model
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
+import com.example.scorematchstatistics.data.db.typeconverter.ListSkillConverter
 import kotlinx.parcelize.Parcelize
 
 
@@ -11,14 +13,9 @@ import kotlinx.parcelize.Parcelize
 data class Player(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
-    val level: Int,
     val name: String,
     val typeOfPlayer: String,
     val image:Int,
-    val speed: Int,
-    val height: Int,
-    val strenght: Int,
-    val power: Int,
-    val skill: Int,
-    val resposne: Int
+    @TypeConverters(ListSkillConverter::class)
+    val skills: List<Skills>,
 ): Parcelable

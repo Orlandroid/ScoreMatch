@@ -15,8 +15,10 @@ class Application : Application() {
 
     @Inject
     lateinit var localRepository: Repository
+
     @Inject
     lateinit var preferencesDatabase: PreferencesDatabase
+
     @Inject
     lateinit var databasePlayersProvider: DatabasePlayersProvider
 
@@ -35,8 +37,9 @@ class Application : Application() {
         }
     }
 
-    private suspend fun insertNormalPlayer(){
+    private suspend fun insertNormalPlayer() {
         localRepository.insertManyPlayer(databasePlayersProvider.dbLevelsGuard())
+
         localRepository.insertManyPlayer(databasePlayersProvider.dbLevelsEngine())
         localRepository.insertManyPlayer(databasePlayersProvider.dbLevelsIntruso())
         localRepository.insertManyPlayer(databasePlayersProvider.dbLevelsInfiltrator())

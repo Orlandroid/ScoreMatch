@@ -23,10 +23,10 @@ class PlayerAllLevelViewModel @Inject constructor(
     private val _player = MutableLiveData<Result<Player>>()
     val player: LiveData<Result<Player>> get() = _player
 
-    fun getLevelOfPlayer(level: Int, name: String) {
+    fun getLevelOfPlayer(name: String) {
         _player.value = Result.Loading
         viewModelScope.launch(Dispatchers.IO) {
-            val reponse = localRepository.getLevelOfPlayer(level, name)
+            val reponse = localRepository.getLevelOfPlayer(name)
             withContext(Dispatchers.Main) {
                 _player.value = Result.Success(reponse)
                 Log.w("RESPONSE",reponse.toString())

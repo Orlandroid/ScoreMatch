@@ -26,35 +26,35 @@ class EstadisticasAdapter() :
                     with(binding){
                         imageEstadistica.setImageResource(R.drawable.running)
                         tvNombreEstadistica.text="Velocidad"
-                        tvValor.text=estadistica.speed.toString()
+                        //tvValor.text=estadistica.speed.toString()
                     }
                 }
                 1->{
                     with(binding){
                         imageEstadistica.setImageResource(R.drawable.altura)
                         tvNombreEstadistica.text="Altura"
-                        tvValor.text=estadistica.height.toString()
+                        //tvValor.text=estadistica.height.toString()
                     }
                 }
                 2->{
                     with(binding){
                         imageEstadistica.setImageResource(R.drawable.brazo)
                         tvNombreEstadistica.text="Fuerza"
-                        tvValor.text=estadistica.strenght.toString()
+                        //tvValor.text=estadistica.strenght.toString()
                     }
                 }
                 3->{
                     with(binding){
                         imageEstadistica.setImageResource(R.drawable.shoe)
                         tvNombreEstadistica.text="Potencia"
-                        tvValor.text=estadistica.power.toString()
+                        //tvValor.text=estadistica.power.toString()
                     }
                 }
                 4->{
                     with(binding){
                         imageEstadistica.setImageResource(R.drawable.thinking)
                         tvNombreEstadistica.text="Respuesta"
-                        tvValor.text=estadistica.resposne.toString()
+                        //tvValor.text=estadistica.resposne.toString()
                     }
                 }
             }

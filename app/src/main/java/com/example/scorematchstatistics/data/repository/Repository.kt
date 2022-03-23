@@ -29,8 +29,8 @@ class Repository @Inject constructor(private val dao: PlayerDao, private val api
         return dao.getAllPlayer()
     }
 
-    suspend fun getLevelOfPlayer(level: Int, name: String): Player {
-        return dao.getLevelOfPlayer(level, name)
+    suspend fun getLevelOfPlayer(name: String): Player {
+        return dao.getLevelOfPlayer(name)
     }
 
 }
