@@ -36,7 +36,7 @@ class PlayerAllLevels : Fragment() {
     }
 
     private fun setUpUi() {
-        viewModel.getLevelOfPlayer(level, args.player.name)
+        viewModel.getLevelOfPlayer(args.player.name)
         with(binding) {
             toolbarLayout.toolbarBack.setOnClickListener {
                 findNavController().popBackStack()
@@ -50,7 +50,7 @@ class PlayerAllLevels : Fragment() {
     }
 
     private fun updateLevel() {
-        viewModel.getLevelOfPlayer(level, args.player.name)
+        viewModel.getLevelOfPlayer(args.player.name)
         if (level == 10) {
             level = 0
         }
@@ -58,12 +58,13 @@ class PlayerAllLevels : Fragment() {
 
     private fun setFeaturesPlayer(player: Player) {
         with(binding) {
+            /*
             velocidad.tvValor.text = player.speed.toString()
             altura.tvValor.text = player.height.toString()
             fuerza.tvValor.text = player.strenght.toString()
             potencia.tvValor.text = player.power.toString()
             habilidad.tvValor.text = player.skill.toString()
-            respuesta.tvValor.text = player.resposne.toString()
+            respuesta.tvValor.text = player.resposne.toString()*/
 
             velocidad.imageEstadistica.setImageResource(R.drawable.running)
             altura.imageEstadistica.setImageResource(R.drawable.altura)

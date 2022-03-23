@@ -13,6 +13,7 @@ class DatabasePlayersProvider @Inject constructor(private val normalPlayersDb: N
         return normalPlayersDb.getLevelsGuard()
     }
 
+
     fun dbLevelsEngine():List<Player>{
         return normalPlayersDb.getLevelsEngine()
     }
@@ -53,17 +54,18 @@ class DatabasePlayersProvider @Inject constructor(private val normalPlayersDb: N
         return normalPlayersDb.getLevelsHameer()
     }
 
-    fun dbLevelsKeeper():List<Player>{
-        return normalPlayersDb.getLevelsKeeper()
-    }
 
-    fun dbLevelsGkSweeeper():List<Player>{
-        return normalPlayersDb.getLevelsGkSweeper()
-    }
+  fun dbLevelsKeeper():List<Player>{
+      return normalPlayersDb.getLevelsKeeper()
+  }
 
-    fun dbLevelsGkStopper():List<Player>{
-        return normalPlayersDb.getLevelsGkStopper()
-    }
+  fun dbLevelsGkSweeeper():List<Player>{
+      return normalPlayersDb.getLevelsGkSweeper()
+  }
+
+  fun dbLevelsGkStopper():List<Player>{
+      return normalPlayersDb.getLevelsGkStopper()
+  }
 
 
 }
