@@ -1,6 +1,5 @@
 package com.example.scorematchstatistics.ui.detailplayer
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,6 +11,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -26,10 +26,10 @@ class PlayerAllLevelViewModel @Inject constructor(
     fun getLevelOfPlayer(name: String) {
         _player.value = Result.Loading
         viewModelScope.launch(Dispatchers.IO) {
-            val reponse = localRepository.getLevelOfPlayer(name)
+            val reponse = localRepository.getLevelsOfOnePlayer(name)
             withContext(Dispatchers.Main) {
                 _player.value = Result.Success(reponse)
-                Log.w("RESPONSE",reponse.toString())
+                Timber.tag("RESPONSE").w(reponse.toString())
             }
         }
     }

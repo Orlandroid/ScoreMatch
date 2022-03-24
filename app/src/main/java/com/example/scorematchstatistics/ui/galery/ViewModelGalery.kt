@@ -35,11 +35,11 @@ class ViewModelGalery @Inject constructor(
                 _players.value = Result.Loading
             }
             val players = localRepository.getAllLevelsOfPlayers()
-            players.forEach {
-                Log.w("LOG",it.skills.size.toString())
-                it.skills.forEach { skills->
-                    Log.w("LOG",skills.toString())
+            if (players.isEmpty()){
+                withContext(Dispatchers.Main){
+                    _players.value=Result.EmptyList
                 }
+                return@launch
             }
             withContext(Dispatchers.Main) {
                 _players.value = Result.Success(players)

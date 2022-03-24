@@ -1,6 +1,7 @@
 package com.example.scorematchstatistics
 
 import android.app.Application
+import android.util.Log
 import com.example.scorematchstatistics.data.dblvelplayers.DatabasePlayersProvider
 import com.example.scorematchstatistics.data.preferences.PreferencesDatabase
 import com.example.scorematchstatistics.data.repository.Repository
@@ -8,7 +9,10 @@ import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import timber.log.Timber
+import timber.log.Timber.Forest.plant
 import javax.inject.Inject
+
 
 @HiltAndroidApp
 class Application : Application() {
@@ -24,6 +28,7 @@ class Application : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        plant(Timber.DebugTree())
         populateDatabaseLevelPlayers()
     }
 
@@ -35,11 +40,12 @@ class Application : Application() {
             }
             return
         }
+
     }
 
     private suspend fun insertNormalPlayer() {
+        Timber.i("Intertando jugadores")
         localRepository.insertManyPlayer(databasePlayersProvider.dbLevelsGuard())
-
         localRepository.insertManyPlayer(databasePlayersProvider.dbLevelsEngine())
         localRepository.insertManyPlayer(databasePlayersProvider.dbLevelsIntruso())
         localRepository.insertManyPlayer(databasePlayersProvider.dbLevelsInfiltrator())

@@ -6,7 +6,7 @@ import androidx.room.TypeConverters
 import com.example.scorematchstatistics.data.db.typeconverter.ListSkillConverter
 import com.example.scorematchstatistics.data.model.Player
 
-@Database(entities = [Player::class], version = 3,exportSchema = false)
+@Database(entities = [Player::class], version = 5,exportSchema = false)
 @TypeConverters(ListSkillConverter::class)
 abstract class ScoreMatchDatabase: RoomDatabase() {
 

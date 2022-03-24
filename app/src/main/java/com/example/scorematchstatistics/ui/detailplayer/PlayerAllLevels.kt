@@ -1,6 +1,5 @@
 package com.example.scorematchstatistics.ui.detailplayer
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +13,7 @@ import com.example.scorematchstatistics.data.model.Player
 import com.example.scorematchstatistics.databinding.FragmentPlayerAllLevelsBinding
 import com.example.scorematchstatistics.util.AlertDialogMessages
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class PlayerAllLevels : Fragment() {
@@ -22,7 +22,8 @@ class PlayerAllLevels : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: PlayerAllLevelViewModel by viewModels()
     private val args: PlayerAllLevelsArgs by navArgs()
-    private var level = 1
+    private var level = 0
+    private var player:Player?=null
 
 
     override fun onCreateView(
@@ -43,28 +44,40 @@ class PlayerAllLevels : Fragment() {
             }
             toolbarLayout.toolbarTitle.text=args.player.name
             imagePlayer.setImageResource(args.player.image)
-            imagePlayer.setOnClickListener {
+            buttonBack.setOnClickListener{
+                level--
+                if (level==-1){
+                    level=9
+                }
+                updateLevel()
+            }
+            buttonNext.setOnClickListener {
+                level++
+                if (level==10){
+                    level=0
+                }
                 updateLevel()
             }
         }
     }
 
-    private fun updateLevel() {
-        viewModel.getLevelOfPlayer(args.player.name)
-        if (level == 10) {
-            level = 0
-        }
+    private fun updateLevel(){
+        val levelText = level+1
+        binding.tvLevel.text=levelText.toString()
+        player?.let { it1 -> setFeaturesPlayer(it1,level) }
     }
 
-    private fun setFeaturesPlayer(player: Player) {
+
+
+    private fun setFeaturesPlayer(player: Player,level:Int) {
+        this.player=player
         with(binding) {
-            /*
-            velocidad.tvValor.text = player.speed.toString()
-            altura.tvValor.text = player.height.toString()
-            fuerza.tvValor.text = player.strenght.toString()
-            potencia.tvValor.text = player.power.toString()
-            habilidad.tvValor.text = player.skill.toString()
-            respuesta.tvValor.text = player.resposne.toString()*/
+            velocidad.tvValor.text = player.skills[level].speed.toString()
+            altura.tvValor.text = player.skills[level].height.toString()
+            fuerza.tvValor.text = player.skills[level].strenght.toString()
+            potencia.tvValor.text = player.skills[level].power.toString()
+            habilidad.tvValor.text = player.skills[level].skill.toString()
+            respuesta.tvValor.text = player.skills[level].resposne.toString()
 
             velocidad.imageEstadistica.setImageResource(R.drawable.running)
             altura.imageEstadistica.setImageResource(R.drawable.altura)
@@ -87,10 +100,11 @@ class PlayerAllLevels : Fragment() {
         viewModel.player.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is Result.Success -> {
-                    setFeaturesPlayer(result.data)
+                    setFeaturesPlayer(result.data,level)
+                    Timber.w(result.data.skills.toString())
                 }
                 is Result.Loading -> {
-                    Log.w(this.tag, "CARGANDO")
+                    this.tag?.let { Timber.tag(it).w("CARGANDO") }
                 }
                 is Result.Error -> {
                     val dialog = AlertDialogMessages(2,result.error)
