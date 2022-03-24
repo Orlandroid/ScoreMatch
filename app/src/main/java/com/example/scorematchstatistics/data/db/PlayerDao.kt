@@ -18,6 +18,6 @@ interface PlayerDao {
     suspend fun getAllPlayer(): List<Player>
 
     @Query("SELECT * FROM PLAYER WHERE  name=:name")
-    suspend fun getLevelOfPlayer(name: String):Player
+    suspend fun getLevelsOfOnePlayer(name: String):Player
 
 }

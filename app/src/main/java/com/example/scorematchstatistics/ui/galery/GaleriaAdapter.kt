@@ -12,8 +12,8 @@ import com.squareup.picasso.Picasso
 
 
 class GaleriaAdapter(
-    val players: List<Player>,
-    val lister: ListerElementsGalery
+    private val players: List<Player>,
+    private val lister: ListerElementsGalery
 ) :
     RecyclerView.Adapter<GaleriaAdapter.ViewHolder>() {
 
