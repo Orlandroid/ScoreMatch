@@ -16,7 +16,6 @@
     <color name="rojo">#d9534f</color>
     <color name="negro">#030303</color>
     <color name="amarillo">#FFD600</color>
-    <color name="gris">#808080</color>
     <color name="verde">#008000</color>
     <color name="olive">#808000</color>
     <color name="morado">#6200EA</color>
@@ -24,6 +23,8 @@
     <color name="cielo">#CCEEFF</color>
     <color name="blanco">#f9f9f9</color>
     <color name="sandybrown">#f4a460</color>
+    <color name="gris">#9F9F9F</color>
+    <color name="gris_1">#caced3</color>
 
     <color name="primary">#0275d8</color>
     <color name="succes">#5cb85c</color>

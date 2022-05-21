@@ -11,10 +11,6 @@ class NormalPlayersDb @Inject constructor() {
 
     companion object {
         const val TYPE_NORMAL = "normal"
-        const val TYPE_SUPER = "normal"
-        const val TYPE_GOLDEN = "normal"
-
-        /*NORMAL PLAYERS*/
         const val GUARD = "guardia"
         const val ENGINE = "motor"
         const val INTRUSO = "intruder"

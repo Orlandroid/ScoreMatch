@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/image_estadistica"
         android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,10 +18,11 @@
         app:srcCompat="@drawable/altura" />
 
     <TextView
+        android:gravity="center"
         android:id="@+id/tv_valor"
         android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_marginEnd="8dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="16dp"
         android:text="0"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -31,9 +32,10 @@
     <TextView
         android:id="@+id/tv_nombre_estadistica"
         android:layout_width="0dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="64dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
         android:text="TextView"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
