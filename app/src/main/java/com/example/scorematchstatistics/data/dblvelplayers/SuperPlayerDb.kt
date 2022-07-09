@@ -1,5 +1,6 @@
 package com.example.scorematchstatistics.data.dblvelplayers
 
+import com.example.scorematchstatistics.R
 import com.example.scorematchstatistics.data.model.Player
 import com.example.scorematchstatistics.data.model.Skills
 import javax.inject.Inject
@@ -22,16 +23,16 @@ class SuperPlayerDb @Inject constructor() {
         const val WIZARD = "Wizard"
     }
 
-    private val imageGatecrasher = 1
-    private val imageMajor = 1
-    private val imageInvader = 1
-    private val imagePoacher = 1
-    private val imageVoyager = 1
-    private val imageWarrior = 1
-    private val imageJet = 1
-    private val imageBulldozer = 1
-    private val imageMarksman = 1
-    private val imageWizard = 1
+    private val imageGatecrasher = R.drawable.gatecrasher
+    private val imageMajor = R.drawable.c_major
+    private val imageInvader = R.drawable.invader
+    private val imagePoacher = R.drawable.poacher
+    private val imageVoyager = R.drawable.voyager
+    private val imageWarrior = R.drawable.warrios
+    private val imageJet = R.drawable.jet
+    private val imageBulldozer = R.drawable.matsumoto
+    private val imageMarksman = R.drawable.c_marksman_faustinho
+    private val imageWizard = R.drawable.wizard
 
     fun getLevelsGatecrasherSkills(): Player {
         return gatecrasherLevels
