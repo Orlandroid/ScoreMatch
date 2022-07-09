@@ -41,35 +41,35 @@ class SuperPlayerDb @Inject constructor() {
         return mayorLevels
     }
 
-    fun getInvaderSkills():Player{
+    fun getInvaderSkills(): Player {
         return invaderLevels
     }
 
-    fun getPoacherLevels():Player{
+    fun getPoacherLevels(): Player {
         return poacherLevels
     }
 
-    fun getvoyagerLevels():Player{
+    fun getvoyagerLevels(): Player {
         return voyagerLevels
     }
 
-    fun getWarriorLevels():Player{
+    fun getWarriorLevels(): Player {
         return warriorLevels
     }
 
-    fun getJetLevels():Player{
+    fun getJetLevels(): Player {
         return jetLevels
     }
 
-    fun getBulldozerLevels():Player{
+    fun getBulldozerLevels(): Player {
         return bulldozerLevels
     }
 
-    fun getMarksmanLevels():Player{
+    fun getMarksmanLevels(): Player {
         return marksmanLevels
     }
 
-    fun getWizardLevels():Player{
+    fun getWizardLevels(): Player {
         return wizardLevels
     }
 
@@ -86,7 +86,8 @@ class SuperPlayerDb @Inject constructor() {
         Skills(speed = 25, height = 50, strenght = 40, power = 10, skill = 10, resposne = 50)
     )
 
-    private val gatecrasherLevels = Player(0, GATECRASHER, TYPE_SUPER, imageGatecrasher, gatecrasherSkills)
+    private val gatecrasherLevels =
+        Player(0, GATECRASHER, TYPE_SUPER, imageGatecrasher, gatecrasherSkills)
 
 
     private val mayorSkills = listOf(
@@ -102,7 +103,7 @@ class SuperPlayerDb @Inject constructor() {
         Skills(speed = 25, height = 50, strenght = 40, power = 10, skill = 10, resposne = 50)
     )
 
-    private val  mayorLevels = Player(0, MAYOR, TYPE_SUPER, imageMajor, mayorSkills)
+    private val mayorLevels = Player(0, MAYOR, TYPE_SUPER, imageMajor, mayorSkills)
 
 
     private val invaderSkills = listOf(
@@ -118,7 +119,7 @@ class SuperPlayerDb @Inject constructor() {
         Skills(speed = 45, height = 30, strenght = 25, power = 10, skill = 20, resposne = 35)
     )
 
-    private val invaderLevels = Player(0, INVADER, TYPE_SUPER,imageInvader,invaderSkills)
+    private val invaderLevels = Player(0, INVADER, TYPE_SUPER, imageInvader, invaderSkills)
 
 
     private val poacherSkills = listOf(
@@ -134,7 +135,7 @@ class SuperPlayerDb @Inject constructor() {
         Skills(speed = 35, height = 20, strenght = 25, power = 30, skill = 25, resposne = 50)
     )
 
-    private val poacherLevels = Player(0, POACHER, TYPE_SUPER,imagePoacher,poacherSkills)
+    private val poacherLevels = Player(0, POACHER, TYPE_SUPER, imagePoacher, poacherSkills)
 
 
     private val voyagerSkills = listOf(
@@ -150,7 +151,7 @@ class SuperPlayerDb @Inject constructor() {
         Skills(speed = 40, height = 35, strenght = 25, power = 10, skill = 15, resposne = 40)
     )
 
-    private val voyagerLevels = Player(0, VOYAGER, TYPE_SUPER,imageVoyager,voyagerSkills)
+    private val voyagerLevels = Player(0, VOYAGER, TYPE_SUPER, imageVoyager, voyagerSkills)
 
 
     private val warriorSkills = listOf(
@@ -166,7 +167,7 @@ class SuperPlayerDb @Inject constructor() {
         Skills(speed = 30, height = 25, strenght = 35, power = 15, skill = 20, resposne = 40)
     )
 
-    private val  warriorLevels = Player(0, WARRIOR, TYPE_SUPER,imageWarrior,warriorSkills)
+    private val warriorLevels = Player(0, WARRIOR, TYPE_SUPER, imageWarrior, warriorSkills)
 
 
     private val jetSkills = listOf(
@@ -182,7 +183,7 @@ class SuperPlayerDb @Inject constructor() {
         Skills(speed = 50, height = 20, strenght = 25, power = 25, skill = 15, resposne = 25)
     )
 
-    private val  jetLevels = Player(0, JET, TYPE_SUPER,imageJet,jetSkills)
+    private val jetLevels = Player(0, JET, TYPE_SUPER, imageJet, jetSkills)
 
 
     private val bulldozerSkills = listOf(
@@ -198,7 +199,7 @@ class SuperPlayerDb @Inject constructor() {
         Skills(speed = 25, height = 40, strenght = 45, power = 40, skill = 15, resposne = 25)
     )
 
-    private val  bulldozerLevels = Player(0, BULLDOZER, TYPE_SUPER,imageBulldozer,bulldozerSkills)
+    private val bulldozerLevels = Player(0, BULLDOZER, TYPE_SUPER, imageBulldozer, bulldozerSkills)
 
 
     private val marksmanSkills = listOf(
@@ -214,7 +215,7 @@ class SuperPlayerDb @Inject constructor() {
         Skills(speed = 35, height = 25, strenght = 30, power = 30, skill = 40, resposne = 25)
     )
 
-    private val  marksmanLevels = Player(0, MARKSMAN, TYPE_SUPER,imageMarksman,marksmanSkills)
+    private val marksmanLevels = Player(0, MARKSMAN, TYPE_SUPER, imageMarksman, marksmanSkills)
 
 
     private val wizardSkills = listOf(
@@ -230,9 +231,7 @@ class SuperPlayerDb @Inject constructor() {
         Skills(speed = 30, height = 20, strenght = 20, power = 15, skill = 50, resposne = 25)
     )
 
-    private val  wizardLevels = Player(0, MARKSMAN, TYPE_SUPER,imageMarksman,marksmanSkills)
-
-
+    private val wizardLevels = Player(0, WIZARD, TYPE_SUPER, imageWizard, wizardSkills)
 
 
 }

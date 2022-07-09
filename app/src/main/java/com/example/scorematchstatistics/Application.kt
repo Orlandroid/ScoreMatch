@@ -36,6 +36,7 @@ class Application : Application() {
         if (!preferencesDatabase.isPlayerDataLeveSave()) {
             CoroutineScope(Dispatchers.IO).launch {
                 insertNormalPlayer()
+                insertSuperPlayer()
                 preferencesDatabase.savePlayerDataLevel()
             }
             return
@@ -44,7 +45,7 @@ class Application : Application() {
     }
 
     private suspend fun insertNormalPlayer() {
-        Timber.i("Intertando jugadores")
+        Timber.i("insertando jugadores")
         localRepository.insertManyPlayer(databasePlayersProvider.dbLevelsGuard())
         localRepository.insertManyPlayer(databasePlayersProvider.dbLevelsEngine())
         localRepository.insertManyPlayer(databasePlayersProvider.dbLevelsIntruso())
@@ -59,8 +60,23 @@ class Application : Application() {
         localRepository.insertManyPlayer(databasePlayersProvider.dbLevelsKeeper())
         localRepository.insertManyPlayer(databasePlayersProvider.dbLevelsGkSweeeper())
         localRepository.insertManyPlayer(databasePlayersProvider.dbLevelsGkStopper())
-
     }
+
+    private suspend fun insertSuperPlayer(){
+        Timber.i("insertando super jugadores")
+        localRepository.insertManyPlayer(databasePlayersProvider.getLevelsGatecrasher())
+        localRepository.insertManyPlayer(databasePlayersProvider.getLevelsmayor())
+        localRepository.insertManyPlayer(databasePlayersProvider.getLevelsInvader())
+        localRepository.insertManyPlayer(databasePlayersProvider.getPoacherLevels())
+        localRepository.insertManyPlayer(databasePlayersProvider.getvoyagerLevels())
+        localRepository.insertManyPlayer(databasePlayersProvider.getWarriorLevels())
+        localRepository.insertManyPlayer(databasePlayersProvider.getJetLevels())
+        localRepository.insertManyPlayer(databasePlayersProvider.getBulldozerLevels())
+        localRepository.insertManyPlayer(databasePlayersProvider.getMarksmanLevels())
+        localRepository.insertManyPlayer(databasePlayersProvider.getWizardLevels())
+    }
+
+
 
 
 }

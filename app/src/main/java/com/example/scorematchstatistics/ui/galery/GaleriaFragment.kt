@@ -51,7 +51,6 @@ class GaleriaFragment : Fragment(), ListerElementsGalery {
         viewModel.players.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is Result.Success -> {
-                    Log.w("LOG", result.data.toString())
                     binding.recyclerGaleria.adapter = GaleriaAdapter(result.data, getListener())
                     binding.recyclerGaleria.layoutManager = GridLayoutManager(requireContext(), 2)
                     binding.progressBar2.visibility = View.INVISIBLE
