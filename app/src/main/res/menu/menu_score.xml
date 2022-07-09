@@ -3,8 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/menu_actualizar"
-        android:icon="@mipmap/ic_download"
-        android:title="@string/texto_actualizar"
-        app:showAsAction="ifRoom" />
+        android:id="@+id/menu_normal"
+        android:title="@string/normal" />
+    <item
+        android:id="@+id/menu_super"
+        android:title="@string/superd" />
+    <item
+        android:id="@+id/menu_golden"
+        android:title="@string/golden" />
 </menu>

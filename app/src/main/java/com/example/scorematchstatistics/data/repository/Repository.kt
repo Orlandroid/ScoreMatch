@@ -29,6 +29,10 @@ class Repository @Inject constructor(private val dao: PlayerDao, private val api
         return dao.getAllPlayer()
     }
 
+    suspend fun getAllPlayersByType(typeOfPlayer:String):List<Player>{
+        return dao.getAllPlayerByType(typeOfPlayer)
+    }
+
     suspend fun getLevelsOfOnePlayer(name: String): Player {
         return dao.getLevelsOfOnePlayer(name)
     }

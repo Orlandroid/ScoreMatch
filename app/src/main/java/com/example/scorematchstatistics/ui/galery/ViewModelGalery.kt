@@ -12,6 +12,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.lang.Exception
 import javax.inject.Inject
 
 
@@ -25,6 +26,9 @@ class ViewModelGalery @Inject constructor(
     private val _players = MutableLiveData<Result<List<Player>>>()
     val players: LiveData<Result<List<Player>>> get() = _players
 
+    private val _playersByType = MutableLiveData<Result<List<Player>>>()
+    val playersByType: LiveData<Result<List<Player>>> get() = _playersByType
+
     init {
         getAllPlayers()
     }
@@ -35,14 +39,38 @@ class ViewModelGalery @Inject constructor(
                 _players.value = Result.Loading
             }
             val players = localRepository.getAllLevelsOfPlayers()
-            if (players.isEmpty()){
-                withContext(Dispatchers.Main){
-                    _players.value=Result.EmptyList
+            if (players.isEmpty()) {
+                withContext(Dispatchers.Main) {
+                    _players.value = Result.EmptyList
                 }
                 return@launch
             }
             withContext(Dispatchers.Main) {
                 _players.value = Result.Success(players)
+            }
+        }
+    }
+
+    fun getAllPlayerByType(typeOfPlayer: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            withContext(Dispatchers.Main) {
+                _playersByType.value = Result.Loading
+            }
+            val players = localRepository.getAllPlayersByType(typeOfPlayer)
+            if (players.isEmpty()) {
+                withContext(Dispatchers.Main) {
+                    _playersByType.value = Result.EmptyList
+                }
+                return@launch
+            }
+            try {
+                withContext(Dispatchers.Main) {
+                    _playersByType.value = Result.Success(players)
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main){
+                    _playersByType.value = Result.Error(e.message?:"Error")
+                }
             }
         }
     }

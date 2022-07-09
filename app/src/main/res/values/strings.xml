@@ -91,4 +91,7 @@
         en la punta del ataque para convertir una defensa en un contrataque.
     </string>
     <string name="aun_no_hay_ningun_registro">Aun no hay ningun registro</string>
+    <string name="normal">Normal</string>
+    <string name="golden">golden</string>
+    <string name="superd">super</string>
 </resources>

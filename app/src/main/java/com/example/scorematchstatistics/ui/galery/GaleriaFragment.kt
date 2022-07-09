@@ -1,17 +1,19 @@
 package com.example.scorematchstatistics.ui.galery
 
 import android.os.Bundle
-import android.util.Log
+import android.view.*
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.scorematchstatistics.R
 import com.example.scorematchstatistics.data.state.Result
 import com.example.scorematchstatistics.data.model.Player
 import com.example.scorematchstatistics.databinding.FragmentGaleriaBinding
+import com.example.scorematchstatistics.ui.MainActivity
 import com.example.scorematchstatistics.util.AlertDialogMessages
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -33,11 +35,13 @@ class GaleriaFragment : Fragment(), ListerElementsGalery {
         return binding.root
     }
 
+
     private fun getListener(): ListerElementsGalery {
         return this
     }
 
     private fun setUpUi() {
+        (activity as AppCompatActivity).setSupportActionBar(binding.toolbarLayout.myToolbar)
         viewModel.getAllPlayers()
         with(binding) {
             toolbarLayout.toolbarTitle.text = "Galeria"
@@ -69,6 +73,34 @@ class GaleriaFragment : Fragment(), ListerElementsGalery {
                 }
             }
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_score, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_normal -> {
+                Toast.makeText(requireContext(), "Acerca de", Toast.LENGTH_LONG).show()
+                return true
+            }
+            R.id.menu_super -> {
+                Toast.makeText(requireContext(), "Compartir", Toast.LENGTH_LONG).show()
+                return true
+            }
+            R.id.menu_golden -> {
+                Toast.makeText(requireContext(), "Imformacion", Toast.LENGTH_LONG).show()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onDestroyView() {
