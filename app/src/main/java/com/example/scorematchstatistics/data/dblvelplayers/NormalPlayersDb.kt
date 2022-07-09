@@ -289,8 +289,6 @@ class NormalPlayersDb @Inject constructor() {
         Skills(speed = 9, height = 25, strenght = 28, power = 13, skill = 2, resposne = 9),
         Skills(speed = 12, height = 28, strenght = 32, power = 28, skill = 4, resposne = 12),
         Skills(speed = 14, height = 31, strenght = 35, power = 31, skill = 4, resposne = 14),
-
-
         Skills(speed = 16, height = 34, strenght = 38, power = 34, skill = 4, resposne = 16),
         Skills(speed = 18, height = 37, strenght = 42, power = 37, skill = 5, resposne = 18),
         Skills(speed = 20, height = 40, strenght = 45, power = 40, skill = 5, resposne = 20),
