@@ -10,6 +10,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.scorematchstatistics.R
+import com.example.scorematchstatistics.data.dblvelplayers.NormalPlayersDb.Companion.TYPE_NORMAL
+import com.example.scorematchstatistics.data.dblvelplayers.SuperPlayerDb.Companion.TYPE_SUPER
 import com.example.scorematchstatistics.data.state.Result
 import com.example.scorematchstatistics.data.model.Player
 import com.example.scorematchstatistics.databinding.FragmentGaleriaBinding
@@ -73,6 +75,27 @@ class GaleriaFragment : Fragment(), ListerElementsGalery {
                 }
             }
         }
+        viewModel.playersByType.observe(viewLifecycleOwner){result->
+            when (result) {
+                is Result.Success -> {
+                    binding.recyclerGaleria.adapter = GaleriaAdapter(result.data, getListener())
+                    binding.recyclerGaleria.layoutManager = GridLayoutManager(requireContext(), 2)
+                    binding.progressBar2.visibility = View.INVISIBLE
+                }
+                is Result.Loading -> {
+                    binding.progressBar2.visibility = View.VISIBLE
+                }
+                is Result.Error -> {
+                    binding.progressBar2.visibility = View.INVISIBLE
+                    val dialog = AlertDialogMessages(2, result.error)
+                    activity?.let { dialog.show(it.supportFragmentManager, "alertMessage") }
+                }
+                is Result.EmptyList ->{
+                    binding.textView.visibility=View.VISIBLE
+                    binding.progressBar2.visibility = View.INVISIBLE
+                }
+            }
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -88,15 +111,19 @@ class GaleriaFragment : Fragment(), ListerElementsGalery {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_normal -> {
-                Toast.makeText(requireContext(), "Acerca de", Toast.LENGTH_LONG).show()
+                viewModel.getAllPlayerByType(TYPE_NORMAL)
                 return true
             }
             R.id.menu_super -> {
-                Toast.makeText(requireContext(), "Compartir", Toast.LENGTH_LONG).show()
+                viewModel.getAllPlayerByType(TYPE_SUPER)
                 return true
             }
             R.id.menu_golden -> {
-                Toast.makeText(requireContext(), "Imformacion", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), "Golden", Toast.LENGTH_LONG).show()
+                return true
+            }
+            R.id.menu_all -> {
+                viewModel.getAllPlayers()
                 return true
             }
         }

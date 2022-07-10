@@ -11,4 +11,7 @@
     <item
         android:id="@+id/menu_golden"
         android:title="@string/golden" />
+    <item
+        android:id="@+id/menu_all"
+        android:title="@string/all" />
 </menu>

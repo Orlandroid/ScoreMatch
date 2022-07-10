@@ -94,4 +94,5 @@
     <string name="normal">Normal</string>
     <string name="golden">golden</string>
     <string name="superd">super</string>
+    <string name="all">All</string>
 </resources>
