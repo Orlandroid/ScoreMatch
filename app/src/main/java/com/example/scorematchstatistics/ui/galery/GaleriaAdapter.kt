@@ -6,21 +6,21 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.scorematchstatistics.R
 import com.example.scorematchstatistics.data.model.Player
 import com.squareup.picasso.Picasso
 
 
 class GaleriaAdapter(
-    private val players: List<Player>,
     private val lister: ListerElementsGalery
 ) :
     RecyclerView.Adapter<GaleriaAdapter.ViewHolder>() {
 
-    private var listaPlayer = listOf<Player>()
+    private var listOfPlayer = listOf<Player>()
 
-    private fun setData(players: List<Player>) {
-        listaPlayer = players
+    fun setData(players: List<Player>) {
+        listOfPlayer = players
         notifyDataSetChanged()
     }
 
@@ -35,13 +35,13 @@ class GaleriaAdapter(
         return ViewHolder(view)
     }
 
-    override fun getItemCount(): Int = players.size
+    override fun getItemCount(): Int = listOfPlayer.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.cartaTexto.text = players[position].name
-        Picasso.get().load(players[position].image).into(holder.cartaImagen)
+        holder.cartaTexto.text = listOfPlayer[position].name
+        Picasso.get().load(listOfPlayer[position].image).into(holder.cartaImagen)
         holder.itemView.setOnClickListener {
-            lister.clickOnPlayer(player = players[position])
+            lister.clickOnPlayer(player = listOfPlayer[position])
         }
     }
 
