@@ -29,6 +29,7 @@ class ViewModelGalery @Inject constructor(
     private val _playersByType = MutableLiveData<Result<List<Player>>>()
     val playersByType: LiveData<Result<List<Player>>> get() = _playersByType
 
+
     init {
         getAllPlayers()
     }
@@ -68,9 +69,18 @@ class ViewModelGalery @Inject constructor(
                     _playersByType.value = Result.Success(players)
                 }
             } catch (e: Exception) {
-                withContext(Dispatchers.Main){
-                    _playersByType.value = Result.Error(e.message?:"Error")
+                withContext(Dispatchers.Main) {
+                    _playersByType.value = Result.Error(e.message ?: "Error")
                 }
+            }
+        }
+    }
+
+
+    private fun <T>doLoading(liveData: MutableLiveData<Result<T>>) {
+        viewModelScope.launch(Dispatchers.IO) {
+            withContext(Dispatchers.Main) {
+                liveData.value = Result.Loading
             }
         }
     }
