@@ -18,15 +18,20 @@ class GoldenPlayersDb constructor() {
         const val COMPOSER = "Composer"
     }
 
+    //Agregar imagenes
     private val imageGuard = R.drawable.c_guardia_bechet
 
     fun getLevelsThunder(): List<Player> = thunderLevels
 
-    fun getLevelshitman(): List<Player> = hitmanLevels
+    fun getLevelsHitman(): List<Player> = hitmanLevels
 
-    fun getLevelslightning(): List<Player> = lightningLevels
+    fun getLevelsLightning(): List<Player> = lightningLevels
 
-    fun getLevelsraider(): List<Player> = raiderLevels
+    fun getLevelsRaider(): List<Player> = raiderLevels
+
+    fun getLevelsMagician(): List<Player> = magicianLevels
+
+    fun getLevelsComposer(): List<Player> = composerLevels
 
 
     private val thunderSkills = listOf(
@@ -97,6 +102,42 @@ class GoldenPlayersDb constructor() {
 
     private val raiderLevels = listOf(
         Player(0, RAIDER, TYPE_GOLDEN, imageGuard, raiderSkills)
+    )
+
+    private val magicianSkills = listOf(
+        Skills(speed = 7, height = 5, strenght = 5, power = 3, skill = 17, resposne = 1),
+        Skills(speed = 10, height = 6, strenght = 6, power = 4, skill = 21, resposne = 3),
+        Skills(speed = 12, height = 7, strenght = 7, power = 5, skill = 24, resposne = 5),
+        Skills(speed = 15, height = 8, strenght = 8, power = 5, skill = 28, resposne = 7),
+        Skills(speed = 17, height = 9, strenght = 9, power = 6, skill = 32, resposne = 9),
+        Skills(speed = 20, height = 11, strenght = 11, power = 7, skill = 35, resposne = 12),
+        Skills(speed = 22, height = 12, strenght = 12, power = 8, skill = 39, resposne = 14),
+        Skills(speed = 25, height = 13, strenght = 13, power = 8, skill = 43, resposne = 16),
+        Skills(speed = 27, height = 14, strenght = 14, power = 9, skill = 46, resposne = 18),
+        Skills(speed = 30, height = 15, strenght = 15, power = 10, skill = 50, resposne = 20)
+    )
+
+
+    private val magicianLevels = listOf(
+        Player(0, MAGICIAN, TYPE_GOLDEN, imageGuard, magicianSkills)
+    )
+
+
+    private val composerSkills = listOf(
+        Skills(speed = 7, height = 7, strenght = 8, power = 13, skill = 17, resposne = 1),
+        Skills(speed = 10, height = 8, strenght = 10, power = 16, skill = 21, resposne = 3),
+        Skills(speed = 12, height = 10, strenght = 12, power = 19, skill = 24, resposne = 5),
+        Skills(speed = 15, height = 11, strenght = 14, power = 22, skill = 28, resposne = 7),
+        Skills(speed = 17, height = 13, strenght = 16, power = 25, skill = 32, resposne = 9),
+        Skills(speed = 20, height = 14, strenght = 17, power = 28, skill = 35, resposne = 12),
+        Skills(speed = 22, height = 16, strenght = 19, power = 31, skill = 39, resposne = 14),
+        Skills(speed = 25, height = 17, strenght = 21, power = 34, skill = 43, resposne = 16),
+        Skills(speed = 27, height = 19, strenght = 23, power = 37, skill = 46, resposne = 18),
+        Skills(speed = 30, height = 29, strenght = 25, power = 40, skill = 50, resposne = 20)
+    )
+
+    private val composerLevels = listOf(
+        Player(0, COMPOSER, TYPE_GOLDEN, imageGuard, composerSkills)
     )
 
 

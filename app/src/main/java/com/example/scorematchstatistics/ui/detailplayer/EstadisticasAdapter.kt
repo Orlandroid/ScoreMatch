@@ -7,7 +7,7 @@ import com.example.scorematchstatistics.R
 import com.example.scorematchstatistics.data.model.Player
 import com.example.scorematchstatistics.databinding.ItemEstadisticaBinding
 
-class EstadisticasAdapter() :
+class EstadisticasAdapter :
     RecyclerView.Adapter<EstadisticasAdapter.ViewHolder>() {
 
 
