@@ -1,5 +1,6 @@
 package com.example.scorematchstatistics.ui.posts
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -13,6 +14,7 @@ class PostAdapter(private val listener:ListenerClickOnPost) :
 
     private var listOfPost = listOf<ScorePostResponse.DataResponse>()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(posts: List<ScorePostResponse.DataResponse>) {
         listOfPost = posts
         notifyDataSetChanged()

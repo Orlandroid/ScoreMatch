@@ -1,5 +1,6 @@
 package com.example.scorematchstatistics.ui.galery
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +20,7 @@ class GaleriaAdapter(
 
     private var listOfPlayer = listOf<Player>()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(players: List<Player>) {
         listOfPlayer = players
         notifyDataSetChanged()

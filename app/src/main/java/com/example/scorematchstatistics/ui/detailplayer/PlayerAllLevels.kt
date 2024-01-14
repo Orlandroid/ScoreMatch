@@ -110,6 +110,8 @@ class PlayerAllLevels : Fragment() {
                     val dialog = AlertDialogMessages(2,result.error)
                     activity?.let { dialog.show(it.supportFragmentManager, "alertMessage") }
                 }
+
+                else -> {}
             }
         }
     }

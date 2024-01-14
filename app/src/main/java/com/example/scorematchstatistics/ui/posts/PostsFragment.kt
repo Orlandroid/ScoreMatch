@@ -1,12 +1,10 @@
 package com.example.scorematchstatistics.ui.posts
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.scorematchstatistics.R
@@ -17,7 +15,6 @@ import com.example.scorematchstatistics.util.AlertDialogMessages
 import com.faltenreich.skeletonlayout.Skeleton
 import com.faltenreich.skeletonlayout.applySkeleton
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.ArrayList
 
 @AndroidEntryPoint
 class PostsFragment : Fragment(), PostAdapter.ListenerClickOnPost {
@@ -64,7 +61,6 @@ class PostsFragment : Fragment(), PostAdapter.ListenerClickOnPost {
                     scoreMatchResponse.data.data.children.forEach { postResponse ->
                         if (postResponse.data.post_hint.equals("image")) {
                             posts.add(postResponse.data)
-                            postResponse.data.url?.let { Log.w("ANDORID", it) }
                         }
                     }
                     adapter.setData(posts = posts)
@@ -79,6 +75,8 @@ class PostsFragment : Fragment(), PostAdapter.ListenerClickOnPost {
                     activity?.let { dialog.show(it.supportFragmentManager, "alertMessage") }
                     findNavController().popBackStack()
                 }
+
+                else -> {}
             }
         }
     }

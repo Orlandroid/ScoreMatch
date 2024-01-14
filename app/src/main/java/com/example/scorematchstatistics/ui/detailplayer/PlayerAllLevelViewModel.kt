@@ -4,14 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.scorematchstatistics.data.state.Result
 import com.example.scorematchstatistics.data.model.Player
 import com.example.scorematchstatistics.data.repository.Repository
+import com.example.scorematchstatistics.data.state.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -29,7 +28,6 @@ class PlayerAllLevelViewModel @Inject constructor(
             val reponse = localRepository.getLevelsOfOnePlayer(name)
             withContext(Dispatchers.Main) {
                 _player.value = Result.Success(reponse)
-                Timber.tag("RESPONSE").w(reponse.toString())
             }
         }
     }
